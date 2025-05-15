@@ -144,3 +144,194 @@ a {
   top: -1rem;
   left: -1rem;
 } */
+
+.feature-col .card {
+  transition: all 0.3s ease;
+}
+
+.feature-col .card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.product-image-wrapper {
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.product-image-wrapper img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.hero-section {
+  /* background: linear-gradient(rgba(0,0,0,0.7), 
+  url('/paint-texture-bg.jpg'); */
+  background-size: cover;
+  background-position: center;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.about-page .btn {
+  transition: all 0.3s ease;
+}
+
+.about-page .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.products-page {
+  .color-family-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+
+  .nav-tabs {
+    .nav-link {
+      border: none;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      color: var(--bs-dark);
+
+      &.active {
+        color: var(--bs-primary);
+        background: transparent;
+        border-bottom: 3px solid var(--bs-primary);
+      }
+
+      &:hover {
+        border-color: transparent;
+      }
+    }
+  }
+
+  .object-fit-cover {
+    object-fit: cover;
+  }
+
+  .bg-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--bs-primary),
+      var(--bs-primary-dark)
+    );
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3a86ff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease,
+    background 0.3s ease;
+}
+
+.custom-cursor.cursor-hover {
+  width: 40px;
+  height: 40px;
+  background: rgba(58, 134, 255, 0.5);
+  border: none;
+}
+
+/* Optional: Hide cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+.custom-cursor.button {
+  background-color: #ff006e;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.custom-cursor.link {
+  background-color: #8338ec;
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}
+
+.custom-cursor.input {
+  width: 10px;
+  height: 20px;
+  background-color: #3a86ff;
+}
+
+.contact-page {
+  .contact-card {
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-control,
+  .form-select {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .btn-primary {
+    padding: 12px 30px;
+    font-weight: 600;
+  }
+}

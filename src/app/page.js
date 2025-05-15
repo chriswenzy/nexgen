@@ -1,17 +1,29 @@
 import Image from "next/image";
 import PublicLayout from "@/components/layout/public-layout";
-import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
 import {
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Row,
+} from "react-bootstrap";
+import {
+  BsArrowRight,
   BsAward,
+  BsCartPlus,
   BsDroplet,
   BsPlayCircle,
   BsShieldCheck,
+  BsStarFill,
 } from "react-icons/bs";
 import heroImg from "../assets/paint-splash.jpg";
 import productImg from "../assets/paint-featured.jpg";
 import { BsTree, BsGem, BsPeople } from "react-icons/bs";
 import aboutImg from "../assets/colorful-about.jpg";
 import aboutImg2 from "../assets/paint-pen.jpg";
+import { features, products } from "@/util/data";
 export default function Home() {
   return (
     <PublicLayout>
@@ -167,7 +179,7 @@ export default function Home() {
             alt="Decorative paint splash"
             width={300}
             height={200}
-            fluid
+            // fluid
             style={{ width: "300px", opacity: 0.15 }}
           />
         </div>
@@ -181,7 +193,7 @@ export default function Home() {
                   <Image
                     src={aboutImg2}
                     alt="Nexgen team working"
-                    fluid
+                    // fluid
                     width={200}
                     height={200}
                   />
@@ -215,7 +227,7 @@ export default function Home() {
                     alt="Founder"
                     width={80}
                     height={80}
-                    roundedCircle
+                    // roundedCircle
                     style={{
                       objectFit: "cover",
                     }}
@@ -355,6 +367,192 @@ export default function Home() {
               <div className="display-4 fw-bold text-warning mb-2">15</div>
               <h5 className="mb-0">Innovation Awards</h5>
               <p className="small text-muted">Industry recognition</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className="py-5 bg-light position-relative">
+        {/* Decorative elements */}
+        <div className="position-absolute top-0 end-0 w-50 h-100 bg-white opacity-50"></div>
+
+        <Container>
+          <Row className="justify-content-center mb-5">
+            <Col lg={8} className="text-center">
+              <h2 className="display-5 fw-bold mb-3">
+                Why <span className="text-primary">Choose Nexgen</span> Paint?
+              </h2>
+              <p className="lead">
+                We don&apos;t just make paint - we create solutions tailored for
+                African homes and businesses.
+              </p>
+            </Col>
+          </Row>
+
+          <Row className="g-4">
+            {features?.map((feature, index) => (
+              <Col key={index} md={6} lg={4} className="feature-col">
+                <Card className="h-100 border-0 shadow-sm hover-shadow transition-all bg-white">
+                  <CardBody className="p-4 text-center">
+                    <div className="icon-wrapper bg-primary bg-opacity-10 rounded-circle p-3 mb-4 mx-auto">
+                      {feature.icon}
+                    </div>
+                    <h5 className="mb-3">{feature.title}</h5>
+                    <p className="text-muted mb-0">{feature.description}</p>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
+
+            {/* CTA Card */}
+            <Col md={6} lg={4} className="d-flex">
+              <Card className="border-0 bg-primary text-white">
+                <CardBody className="p-4 d-flex flex-column justify-content-center text-center">
+                  <h4 className="mb-4">Ready to Transform Your Space?</h4>
+                  <p className="mb-4">
+                    Explore our premium paint collections tailored for every
+                    surface and style.
+                  </p>
+                  <Button
+                    variant="light"
+                    size="lg"
+                    className="rounded-pill mt-auto"
+                  >
+                    Explore Paint Categories
+                  </Button>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          {/* Trust badges */}
+          <Row className="mt-5 g-3 justify-content-center">
+            <Col xs="auto">
+              <div className="d-flex align-items-center bg-white p-3 rounded-3 shadow-sm">
+                <span className="badge bg-success me-2">4.9</span>
+                <span>★★★★★ (2,483 reviews)</span>
+              </div>
+            </Col>
+            <Col xs="auto">
+              <div className="d-flex align-items-center bg-white p-3 rounded-3 shadow-sm">
+                <span className="badge bg-warning me-2">10+</span>
+                <span>Years in Nigeria</span>
+              </div>
+            </Col>
+            <Col xs="auto">
+              <div className="d-flex align-items-center bg-white p-3 rounded-3 shadow-sm">
+                <span className="badge bg-info me-2">50K+</span>
+                <span>Projects Completed</span>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className="py-6 bg-white">
+        <Container>
+          {/* Section Header */}
+          <Row className="mb-5">
+            <Col lg={8} className="mx-auto text-center">
+              <h2 className="display-5 fw-bold mb-3">Featured Products</h2>
+              <p className="lead text-muted">
+                Discover top-rated paints loved by professionals and homeowners
+                alike
+              </p>
+            </Col>
+          </Row>
+
+          {/* Product Cards */}
+          <Row className="g-4">
+            {products.map((product) => (
+              <Col key={product.id} md={6} lg={3}>
+                <Card className="h-100 border-0 shadow-sm product-card">
+                  {/* Product Badge */}
+                  {product.badge && (
+                    <Badge
+                      pill
+                      bg="warning"
+                      className="position-absolute top-0 start-0 m-3"
+                    >
+                      {product.badge}
+                    </Badge>
+                  )}
+
+                  {/* Product Image */}
+                  <div className="product-image-wrapper">
+                    <Image
+                      width={300}
+                      height={300}
+                      // fill
+                      variant="top"
+                      src={product.image}
+                      alt={product.name}
+                      className="img-fluid"
+                    />
+                  </div>
+
+                  <CardBody className="pt-4">
+                    {/* Rating */}
+                    <div className="d-flex align-items-center mb-2">
+                      <div className="text-warning me-2">
+                        <BsStarFill className="me-1" />
+                        {product.rating}
+                      </div>
+                      <small className="text-muted">
+                        ({product.reviews} reviews)
+                      </small>
+                    </div>
+
+                    {/* Product Info */}
+                    <h5 className="mb-1">{product.name}</h5>
+                    <small className="text-muted d-block mb-2">
+                      {product.category}
+                    </small>
+
+                    {/* Price */}
+                    <div className="d-flex align-items-center mb-3">
+                      <h4 className="mb-0 text-primary">{product.price}</h4>
+                      {product.oldPrice && (
+                        <small className="text-decoration-line-through text-muted ms-2">
+                          {product.oldPrice}
+                        </small>
+                      )}
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="d-grid gap-2">
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        className="rounded-pill"
+                      >
+                        <BsCartPlus className="me-2" />
+                        Add to Cart
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="rounded-pill"
+                      >
+                        View Details
+                      </Button>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+
+          {/* Section CTA */}
+          <Row className="mt-5">
+            <Col className="text-center">
+              <Button
+                variant="outline-primary"
+                size="lg"
+                className="rounded-pill px-4"
+              >
+                Shop All Paint Products <BsArrowRight className="ms-2" />
+              </Button>
             </Col>
           </Row>
         </Container>

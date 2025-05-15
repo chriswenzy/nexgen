@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "./provider";
+import CustomCursor from "@/util/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <CustomCursor />
+
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
