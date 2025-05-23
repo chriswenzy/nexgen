@@ -22,7 +22,7 @@ import {
   BsQuestionCircle,
   BsArrowRight,
 } from "react-icons/bs";
-import aboutImg2 from "../../assets/paint-pen.jpg";
+import aboutImg2 from "../../assets/art-brush.jpg";
 
 const Products = () => {
   const getColorFamilyBase = (family) => {
@@ -41,7 +41,7 @@ const Products = () => {
     <PublicLayout>
       <div className="products-page">
         {/* Hero Section */}
-        <section className="py-5 py-lg-7 bg-primary bg-gradient text-white">
+        <section className="py-5 py-lg-7 bg-blue text-white">
           <Container>
             <Row className="align-items-center">
               <Col lg={6}>
@@ -49,15 +49,15 @@ const Products = () => {
                 <p className="lead mb-5">
                   Premium Paints for Every Surface, Every Style, Every Space.
                 </p>
-                <Button variant="light" size="lg" className="rounded-pill px-4">
+                <Button variant="light" size="md" className="rounded-pill px-4">
                   Find Your Perfect Paint <BsArrowRight className="ms-2" />
                 </Button>
               </Col>
               <Col lg={6} className="d-none d-lg-block">
                 <Image
                   src={aboutImg2}
-                  width={300}
-                  height={300}
+                  width={600}
+                  height={600}
                   alt="Our paint image"
                 />
               </Col>
@@ -107,7 +107,7 @@ const Products = () => {
                             <ul className="list-unstyled">
                               {category.features.map((feature, index) => (
                                 <li key={index} className="mb-2 d-flex">
-                                  <BsCheckCircle className="text-primary me-2 mt-1" />
+                                  <BsCheckCircle className="text-color-2 me-2 mt-1" />
                                   {feature}
                                 </li>
                               ))}
@@ -133,12 +133,11 @@ const Products = () => {
                             </div>
                           </div>
 
-                          <Button
-                            variant="primary"
-                            className="rounded-pill px-4"
-                          >
+                          {/* <Button className="rounded-pill px-4 bg-blue">
                             {category.cta}
-                          </Button>
+
+                            <BsArrowRight className="ms-2" />
+                          </Button> */}
                         </Card.Body>
                       </Card>
                     </Col>
@@ -187,16 +186,17 @@ const Products = () => {
                       ))}
                     </Row>
                     <Button
-                      variant="outline-primary"
+                      variant="outline-dark"
                       className="mt-3 rounded-pill"
                     >
                       Explore All Paint Options
+                      <BsArrowRight className="ms-2" />
                     </Button>
                   </Card.Body>
                 </Card>
               </Col>
               <Col md={4}>
-                <Card className="border-0 bg-primary text-white h-100">
+                <Card className="border-0 bg-orange text-white h-100">
                   <Card.Body className="p-4 d-flex flex-column">
                     <div className="mb-4">
                       <BsQuestionCircle size={48} className="mb-3" />
@@ -211,6 +211,7 @@ const Products = () => {
                       className="rounded-pill mt-auto px-4"
                     >
                       Book a Free Paint Consultation
+                      <BsArrowRight className="ms-2" />
                     </Button>
                   </Card.Body>
                 </Card>
@@ -220,12 +221,12 @@ const Products = () => {
         </section>
 
         {/* Color Families */}
-        <section className="py-5 py-lg-7">
+        <section className="py-5 py-lg-7 my-5">
           <Container>
             <Row className="justify-content-center mb-5">
               <Col lg={8} className="text-center">
                 <h2 className="display-5 fw-bold mb-3">Find Your Color</h2>
-                <p className="lead text-muted">
+                <p className=" text-muted">
                   Explore our carefully curated color families to find your
                   perfect shade
                 </p>
@@ -251,18 +252,18 @@ const Products = () => {
                       }}
                     ></div>
                     <Card.Body>
-                      <h5 className="mb-0">{colorFamily}</h5>
+                      <h6 className="mb-0">{colorFamily}</h6>
                     </Card.Body>
                   </Card>
                 </Col>
               ))}
             </Row>
 
-            <div className="text-center mt-5">
+            {/* <div className="text-center mt-5">
               <Button variant="primary" size="lg" className="rounded-pill px-4">
                 Explore Our Color Families <BsPalette className="ms-2" />
               </Button>
-            </div>
+            </div> */}
           </Container>
         </section>
       </div>

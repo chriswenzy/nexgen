@@ -1,10 +1,10 @@
 @import url("https://fonts.cdnfonts.com/css/montserrat");
 
-/* $bg-orange-light: #fbc8c5;
-$bg-blue-light: #0079c8;
-$bg-orange: #ff4500;
-$bg-light-main: #e0def733;
-$bg-main: #0079C8; */
+$bg-yellow: #ffbe31;
+$bg-blue: #1f003e;
+$bg-orange: #ff6e43;
+$bg-green: #469100;
+$bg-orange-light: #ff8f6d;
 
 * {
   font-family: "Montserrat", sans-serif;
@@ -34,6 +34,10 @@ body {
 
 .transition {
   transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
 }
 
 .hover-opacity-100:hover {
@@ -46,7 +50,9 @@ address div:not(:last-child) {
 a {
   text-decoration: none !important;
 }
-
+.text-color-1 {
+  color: $bg-orange !important;
+}
 /* Hover effect for nav items */
 .nav-link.hover-primary:hover {
   color: var(--bs-primary) !important;
@@ -87,6 +93,95 @@ a {
   min-height: 100vh;
 }
 
+.bg-blue {
+  background-color: $bg-blue !important;
+}
+.bg-yellow {
+  background-color: $bg-yellow !important;
+}
+.bg-orange {
+  background-color: $bg-orange !important;
+}
+.bg-green {
+  background-color: $bg-green !important;
+}
+.bg-orange-light {
+  background-color: $bg-orange-light !important;
+}
+.bg-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--bs-primary),
+    var(--bs-primary-dark)
+  );
+}
+.bg-gradient-light {
+  background: linear-gradient(135deg, var(--bs-primary), var(--bs-primary));
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(
+    135deg,
+    var(--bs-warning),
+    var(--bs-warning-dark)
+  );
+}
+.bg-gradient-success {
+  background: linear-gradient(
+    135deg,
+    var(--bs-success),
+    var(--bs-success-dark)
+  );
+}
+.bg-gradient-danger {
+  background: linear-gradient(135deg, var(--bs-danger), var(--bs-danger-dark));
+}
+.bg-gradient-info {
+  background: linear-gradient(135deg, var(--bs-info), var(--bs-info-dark));
+}
+.bg-gradient-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--bs-secondary),
+    var(--bs-secondary-dark)
+  );
+}
+.bg-gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--bs-primary),
+    var(--bs-primary-dark)
+  );
+}
+.bg-gradient-light {
+  background: linear-gradient(135deg, var(--bs-light), var(--bs-light-dark));
+}
+.bg-gradient-dark {
+  background: linear-gradient(135deg, var(--bs-dark), var(--bs-dark-dark));
+}
+.bg-gradient-white {
+  background: linear-gradient(135deg, var(--bs-white), var(--bs-white-dark));
+}
+.bg-gradient-black {
+  background: linear-gradient(135deg, var(--bs-black), var(--bs-black-dark));
+}
+
+.text-color-1 {
+  color: $bg-orange !important;
+}
+.text-color-2 {
+  color: $bg-yellow !important;
+}
+.text-color-3 {
+  color: $bg-blue !important;
+}
+.text-color-4 {
+  color: $bg-green !important;
+}
+.text-color-5 {
+  color: $bg-orange-light !important;
+}
+
 .hover-transform:hover {
   transform: translateY(-3px);
   transition: all 0.3s ease;
@@ -114,9 +209,9 @@ a {
   margin-right: 12px;
 }
 
-.about-section {
-  background: linear-gradient(to bottom, #ffffff 70%, #f9f9f9 100%);
-}
+// .about-section {
+//   background: linear-gradient(to bottom, #ffffff 70%, #f9f9f9 100%);
+// }
 
 .image-stack {
   position: relative;
@@ -333,5 +428,37 @@ a {
   .btn-primary {
     padding: 12px 30px;
     font-weight: 600;
+  }
+}
+
+.distributor-page {
+  .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .card {
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .list-group-item {
+    font-size: 1.1rem;
   }
 }

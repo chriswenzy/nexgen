@@ -24,6 +24,9 @@ import { BsTree, BsGem, BsPeople } from "react-icons/bs";
 import aboutImg from "../assets/colorful-about.jpg";
 import aboutImg2 from "../assets/paint-pen.jpg";
 import { features, products } from "@/util/data";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Link from "next/link";
 export default function Home() {
   return (
     <PublicLayout>
@@ -97,7 +100,7 @@ export default function Home() {
             </Col>
 
             {/* Product showcase - right side */}
-            <Col lg={5} className="d-none d-lg-block">
+            <Col lg={5} className="d-none d-lg-block ">
               <div className="paint-can-card bg-white rounded-4 p-4 shadow-lg position-relative">
                 <div className="position-absolute top-0 start-50 translate-middle">
                   <div className="bg-danger text-white small px-3 py-2 rounded-pill fw-bold">
@@ -137,24 +140,26 @@ export default function Home() {
         </Container>
 
         {/* Trust indicators at bottom */}
-        <div className="position-absolute bottom-0 w-100 bg-white py-3">
+        <div className="position-absolute bottom-0 w-100 bg-gradient shadow py-5">
           <Container>
             <Row className="g-4 text-center">
               <Col xs={6} md={3}>
-                <div className="h3 fw-bold text-primary mb-1">10K+</div>
-                <div className="small">Happy Customers</div>
+                <div className="h3 fw-bold text-light mb-1">10K+</div>
+                <div className="small text-white fw-bold">Happy Customers</div>
               </Col>
               <Col xs={6} md={3}>
-                <div className="h3 fw-bold text-primary mb-1">15</div>
-                <div className="small">Years Warranty</div>
+                <div className="h3 fw-bold text-white mb-1">15</div>
+                <div className="small text-white fw-bold">Years Warranty</div>
               </Col>
               <Col xs={6} md={3}>
-                <div className="h3 fw-bold text-primary mb-1">100%</div>
-                <div className="small">Satisfaction Guarantee</div>
+                <div className="h3 fw-bold text-white mb-1">100%</div>
+                <div className="small fw-bold text-white">
+                  Satisfaction Guarantee
+                </div>
               </Col>
               <Col xs={6} md={3}>
-                <div className="h3 fw-bold text-primary mb-1">24/7</div>
-                <div className="small">Expert Support</div>
+                <div className="h3 fw-bold text-white mb-1">24/7</div>
+                <div className="small text-white fw-bold">Expert Support</div>
               </Col>
             </Row>
           </Container>
@@ -162,27 +167,11 @@ export default function Home() {
       </section>
 
       <section
-        className="position-relative py-5 py-lg-8"
-        style={{ backgroundColor: "#f9f9f9" }}
+        className="position-relative py-5 py-lg-8 bg-light shadow"
+        // style={{ backgroundColor: "#f9f9f9" }}
       >
         {/* Decorative elements */}
-        <div
-          className="position-absolute top-0 end-0 w-50 h-100 bg-light"
-          style={{ zIndex: 0 }}
-        />
-        <div
-          className="position-absolute bottom-0 start-0"
-          style={{ zIndex: 0 }}
-        >
-          <Image
-            src={aboutImg}
-            alt="Decorative paint splash"
-            width={300}
-            height={200}
-            // fluid
-            style={{ width: "300px", opacity: 0.15 }}
-          />
-        </div>
+        <div className="position-absolute top-0 end-0  h-100 bg-light" />
 
         <Container>
           <Row className="align-items-center">
@@ -220,7 +209,7 @@ export default function Home() {
               </div>
 
               {/* Founder's Note */}
-              <Card className="bg-white p-4 rounded-3 shadow mt-5 border-start border-5 border-warning">
+              <Card className="bg-white p-4 rounded-3 shadow mt-5 border-start border-5">
                 <div className="d-flex">
                   <Image
                     src={aboutImg2}
@@ -239,7 +228,7 @@ export default function Home() {
                       protection for what matters most.
                     </blockquote>
                     <div>
-                      <h6 className="mb-0">Adebayo Johnson</h6>
+                      <h6 className="mb-0">Shola Julius</h6>
                       <p className="small text-muted mb-0">Founder & CEO</p>
                     </div>
                   </div>
@@ -248,22 +237,22 @@ export default function Home() {
             </Col>
 
             {/* Content Column */}
-            <Col lg={6} className="ps-lg-5">
+            <Col lg={6} className="">
               <div className="mb-4">
                 <Badge
                   pill
                   bg="warning"
-                  className="text-warning bg-opacity-10 px-3 py-2 mb-3"
+                  className="text-color-3 bg-opacity-10 px-3 py-2 mb-3"
                 >
                   OUR STORY
                 </Badge>
                 <h2 className="display-5 fw-bold mb-4">
                   Revolutionizing{" "}
-                  <span className="text-warning">African Homes</span> Since 2010
+                  <span className="text-color-2">African Homes</span> Since 2010
                 </h2>
-                <p className="lead">
+                <p className="">
                   What started as a small Lagos paint shop has grown into
-                  Nigeria`&apos`s most trusted paint brand, transforming over
+                  Nigeria&apos;s most trusted paint brand, transforming over
                   50,000 spaces with our premium formulations.
                 </p>
               </div>
@@ -329,25 +318,29 @@ export default function Home() {
               <div className="d-flex flex-wrap gap-3">
                 <Button
                   variant="warning"
-                  size="lg"
-                  className="rounded-pill px-4"
+                  size="md"
+                  className="rounded-pill px-4 shadow"
                 >
-                  Meet Our Team
+                  Read More
+                  <BsArrowRight className="ms-2" />
                 </Button>
-                <Button
+                {/* <Button
                   variant="outline-dark"
                   size="lg"
                   className="rounded-pill px-4"
                 >
                   <BsPlayCircle className="me-2" />
                   Watch Our Story
-                </Button>
+                </Button> */}
               </div>
             </Col>
           </Row>
 
           {/* Milestones */}
-          <Row className="mt-5 g-4">
+        </Container>
+
+        <Container>
+          <Row className="mt-5 g-4 bg-light ">
             <Col md={3} className="text-center">
               <div className="display-4 fw-bold text-warning mb-2">14</div>
               <h5 className="mb-0">Years Experience</h5>
@@ -380,7 +373,7 @@ export default function Home() {
           <Row className="justify-content-center mb-5">
             <Col lg={8} className="text-center">
               <h2 className="display-5 fw-bold mb-3">
-                Why <span className="text-primary">Choose Nexgen</span> Paint?
+                Why <span className="text-color-1">Choose Nexgen</span> Paint?
               </h2>
               <p className="lead">
                 We don&apos;t just make paint - we create solutions tailored for
@@ -394,8 +387,8 @@ export default function Home() {
               <Col key={index} md={6} lg={4} className="feature-col">
                 <Card className="h-100 border-0 shadow-sm hover-shadow transition-all bg-white">
                   <CardBody className="p-4 text-center">
-                    <div className="icon-wrapper bg-primary bg-opacity-10 rounded-circle p-3 mb-4 mx-auto">
-                      {feature.icon}
+                    <div className="icon-wrapper bg-info bg-opacity-10 rounded-circle p-3 mb-4 mx-auto">
+                      <span className="text-color-1">{feature.icon}</span>
                     </div>
                     <h5 className="mb-3">{feature.title}</h5>
                     <p className="text-muted mb-0">{feature.description}</p>
@@ -406,7 +399,7 @@ export default function Home() {
 
             {/* CTA Card */}
             <Col md={6} lg={4} className="d-flex">
-              <Card className="border-0 bg-primary text-white">
+              <Card className="border-0 bg-blue text-white">
                 <CardBody className="p-4 d-flex flex-column justify-content-center text-center">
                   <h4 className="mb-4">Ready to Transform Your Space?</h4>
                   <p className="mb-4">
@@ -415,10 +408,11 @@ export default function Home() {
                   </p>
                   <Button
                     variant="light"
-                    size="lg"
+                    size="md"
                     className="rounded-pill mt-auto"
                   >
                     Explore Paint Categories
+                    <BsArrowRight className="ms-2" />
                   </Button>
                 </CardBody>
               </Card>
@@ -449,13 +443,13 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-6 bg-white">
+      <section className="py-5 my-5 bg-white">
         <Container>
           {/* Section Header */}
           <Row className="mb-5">
             <Col lg={8} className="mx-auto text-center">
               <h2 className="display-5 fw-bold mb-3">Featured Products</h2>
-              <p className="lead text-muted">
+              <p className=" text-muted">
                 Discover top-rated paints loved by professionals and homeowners
                 alike
               </p>
@@ -546,13 +540,15 @@ export default function Home() {
           {/* Section CTA */}
           <Row className="mt-5">
             <Col className="text-center">
-              <Button
-                variant="outline-primary"
-                size="lg"
-                className="rounded-pill px-4"
-              >
-                Shop All Paint Products <BsArrowRight className="ms-2" />
-              </Button>
+              <Link href="/product">
+                <Button
+                  variant="outline-dark"
+                  size="md"
+                  className="rounded-pill px-4 shadow"
+                >
+                  Shop All Paint Products <BsArrowRight className="ms-2" />
+                </Button>
+              </Link>
             </Col>
           </Row>
         </Container>

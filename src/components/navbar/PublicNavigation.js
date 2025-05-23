@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { navItems } from "@/util/data";
+import { BsArrowRight } from "react-icons/bs";
 
 const PublicNavigationBar = () => {
   const pathname = usePathname(); // Correct way to get current route in App Router
@@ -54,11 +55,16 @@ const PublicNavigationBar = () => {
 
           {/* CTA Button */}
           <div className="d-flex">
-            <Link href="/auth/register">
-              <Button variant="" className="shadow px-4 c-btn">
-                <small>Get Started</small>
+            {/* <Link href="/auth/register">
+              <Button
+                variant="warning"
+                size="md"
+                className="rounded-pill px-4 shadow"
+              >
+                Get Started
+                <BsArrowRight className="ms-2" />
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </Navbar.Collapse>
       </Container>

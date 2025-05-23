@@ -9,11 +9,15 @@ import {
   BsBuilding,
   BsCheckCircle,
   BsFacebook,
+  BsGraphUp,
   BsHeadset,
+  BsLightning,
+  BsMegaphone,
   BsPaintBucket,
   BsPalette,
   BsShield,
   BsShieldCheck,
+  BsTag,
   BsTruck,
 } from "react-icons/bs";
 import { FaLeaf } from "react-icons/fa";
@@ -33,7 +37,7 @@ export const footerLinks = [
   {
     title: "Resources",
     links: [
-      { text: "Help Center", url: "#" },
+      { text: "Become a distributor", url: "/distributor" },
       { text: "FAQs", url: "/fqa" },
       { text: "Color Guides", url: "#" },
       { text: "Application Tips", url: "#" },
@@ -91,7 +95,7 @@ export const features = [
       "One coat is often enough for full opacity, saving you time and money.",
   },
   {
-    icon: <BsShield size={32} className="text-primary" />,
+    icon: <BsShield size={32} className="text-color-2" />,
     title: "Durable & Weather-Resistant",
     description:
       "Specially formulated to withstand Nigeria's harsh climate conditions.",
@@ -107,7 +111,7 @@ export const features = [
     description: "VOC-free formulas safe for families and the environment.",
   },
   {
-    icon: <BsTruck size={32} className="text-primary" />,
+    icon: <BsTruck size={32} className="text-color-2" />,
     title: "Fast Delivery Nationwide",
     description: "Reliable logistics to get your paint when you need it.",
   },
@@ -122,7 +126,7 @@ export const products = [
     oldPrice: "₦22,000",
     rating: 4.8,
     reviews: 1243,
-    image: "/interior-matte.jpg",
+    image: "/images/products/paint-2.jpg",
     badge: "Best Seller",
   },
   {
@@ -133,7 +137,7 @@ export const products = [
     oldPrice: "₦25,500",
     rating: 4.7,
     reviews: 892,
-    image: "/exterior-paint.jpg",
+    image: "/images/products/paint-3.jpg",
     badge: "Climate Shield",
   },
   {
@@ -144,7 +148,7 @@ export const products = [
     oldPrice: "₦29,000",
     rating: 4.9,
     reviews: 567,
-    image: "/industrial-coating.jpg",
+    image: "/images/products/paint.jpg",
     badge: "Professional Choice",
   },
   {
@@ -155,7 +159,7 @@ export const products = [
     oldPrice: "₦15,000",
     rating: 4.6,
     reviews: 2104,
-    image: "/primer.jpg",
+    image: "/images/products/paint-5.jpg",
     badge: "Essential",
   },
 ];
@@ -173,7 +177,7 @@ export const productCategories = [
       "One-coat coverage",
       "VOC-free formulas",
     ],
-    image: "/interior-paint.jpg",
+    image: "/images/products/paint-2.jpg",
     cta: "Explore Interior Paints",
     popularProducts: [
       "Luxury Matte",
@@ -194,7 +198,7 @@ export const productCategories = [
       "UV radiation protection",
       "Climate-adaptive formula",
     ],
-    image: "/exterior-paint.jpg",
+    image: "/images/products/paint-3.jpg",
     cta: "Explore Exterior Paints",
     popularProducts: [
       "WeatherGuard",
@@ -215,7 +219,7 @@ export const productCategories = [
       "High-traffic endurance",
       "Corrosion protection",
     ],
-    image: "/industrial-paint.jpg",
+    image: "/images/products/paint-4.jpg",
     cta: "Explore Industrial Paints",
     popularProducts: [
       "Heavy-Duty Epoxy",
@@ -236,7 +240,7 @@ export const productCategories = [
       "Universal surface preparation",
       "Quick-drying formula",
     ],
-    image: "/primer.jpg",
+    image: "/images/products/paintbrush-2.jpg",
     cta: "Explore Primers",
     popularProducts: [
       "Wall Sealer",
@@ -258,37 +262,37 @@ export const quickLinks = [
 
 export const benefits = [
   {
-    icon: <BsCheckCircle size={24} className="text-primary" />,
+    icon: <BsCheckCircle size={24} className="text-color-1" />,
     title: "Contractor Pricing",
     description:
       "Get unbeatable bulk discounts tailored to the size and frequency of your orders.",
   },
   {
-    icon: <BsTruck size={24} className="text-primary" />,
+    icon: <BsTruck size={24} className="text-color-1" />,
     title: "On-Time, Every Time",
     description:
       "Your project doesn't wait — we deliver to your site, store, or warehouse when you need it.",
   },
   {
-    icon: <BsHeadset size={24} className="text-primary" />,
+    icon: <BsHeadset size={24} className="text-color-1" />,
     title: "Dedicated Support Team",
     description:
       "A real human point of contact who understands your business and goals.",
   },
   {
-    icon: <BsShieldCheck size={24} className="text-primary" />,
+    icon: <BsShieldCheck size={24} className="text-color-1" />,
     title: "Paints Built for Performance",
     description:
       "Weatherproof, washable, and engineered for Nigeria's climate and standards.",
   },
   {
-    icon: <BsPalette size={24} className="text-primary" />,
+    icon: <BsPalette size={24} className="text-color-1" />,
     title: "Expert Guidance",
     description:
       "Free technical consultations for color scheming and product compatibility.",
   },
   {
-    icon: <BsBuilding size={24} className="text-primary" />,
+    icon: <BsBuilding size={24} className="text-color-1" />,
     title: "Marketing Exposure",
     description:
       "Showcase your projects through our channels to grow your brand visibility.",
@@ -431,4 +435,59 @@ export const faqCategories = [
       },
     ],
   },
+];
+
+export const Distributorbenefits = [
+  {
+    icon: <BsLightning size={32} className="text-primary" />,
+    title: "Fast-Moving Products",
+    description:
+      "Premium quality, affordability, and beautiful finishes make Nexgen a favorite among professionals and homeowners.",
+  },
+  {
+    icon: <BsTag size={32} className="text-primary" />,
+    title: "Competitive Wholesale Prices",
+    description:
+      "Exclusive distributor discounts that give you an edge in your local market.",
+  },
+  {
+    icon: <BsTruck size={32} className="text-primary" />,
+    title: "Reliable Delivery",
+    description:
+      "On-time delivery to your shop or warehouse so you never run out of stock.",
+  },
+  {
+    icon: <BsMegaphone size={32} className="text-primary" />,
+    title: "Marketing & Brand Support",
+    description:
+      "Free promotional materials and digital exposure to boost your sales.",
+  },
+  {
+    icon: <BsGraphUp size={32} className="text-primary" />,
+    title: "Lucrative Profits",
+    description:
+      "High demand and flexible reorder quantities help grow your revenue steadily.",
+  },
+];
+
+export const productRange = [
+  "Interior & Exterior Paints",
+  "Primers & Undercoats",
+  "Industrial Coatings",
+  "Anti-Mould & Waterproof Paints",
+  "Specialty Finishes & More",
+];
+
+export const eligibleApplicants = [
+  "Paint and building materials store owners",
+  "Hardware retailers",
+  "Paint sellers in open markets",
+  "Bulk supply agents",
+  "Business-minded individuals in construction",
+];
+
+export const steps = [
+  "Fill out the distributor application form",
+  "Our team will contact you within 72 hours",
+  "Receive distributor package and starter support",
 ];

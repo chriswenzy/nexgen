@@ -111,7 +111,7 @@ const ContactUsForm = () => {
               name="message"
               rows={3}
               className="form-control"
-              placeholder="Hi! We are Xpirealty..."
+              placeholder="Hi! We are Nexgen..."
             />
             <ErrorMessage
               name="message"
@@ -122,7 +122,7 @@ const ContactUsForm = () => {
 
           <Form.Group controlId="privacy_policy" className="mb-3">
             <Field type="checkbox" name="privacy_policy" className="me-2" />
-            <Form.Label>I agree with Qompass Privacy Policy</Form.Label>
+            <Form.Label>I agree with Nexgen Privacy Policy</Form.Label>
             <ErrorMessage
               name="privacy_policy"
               component="div"

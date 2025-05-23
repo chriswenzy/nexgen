@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "./provider";
 import CustomCursor from "@/util/CustomCursor";

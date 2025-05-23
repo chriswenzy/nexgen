@@ -10,16 +10,17 @@ import {
   BsShieldCheck,
   BsBuilding,
   BsHeadset,
+  BsArrowRight,
 } from "react-icons/bs";
-import aboutImg2 from "../../assets/paint-pen.jpg";
+import aboutImg2 from "../../assets/activity-painting.jpg";
 
 const AboutUs = () => {
   return (
     <PublicLayout>
       <div className="about-page">
         {/* Hero Section */}
-        <section className="hero-section py-5 py-lg-7 bg-dark text-white position-relative">
-          <div className="position-absolute top-0 end-0 w-50 h-100 bg-primary opacity-10"></div>
+        <section className="hero-section py-5 py-lg-7 bg-blue text-white position-relative">
+          <div className="position-absolute top-0 end-0 w-50  bg-primary opacity-10"></div>
           <Container>
             <Row className="align-items-center">
               <Col lg={6} className="mb-5 mb-lg-0">
@@ -27,19 +28,20 @@ const AboutUs = () => {
                   OUR STORY
                 </Badge>
                 <h1 className="display-4 fw-bold mb-4">
-                  Redefining <span className="text-warning">Paint Quality</span>{" "}
+                  Redefining <span className="text-color-2">Paint Quality</span>{" "}
                   in Africa
                 </h1>
-                <p className="lead mb-5">
+                <p className=" mb-5">
                   Born from a passion to transform spaces, Nexgen Paint brings
                   world-class solutions to homes and businesses across Nigeria.
                 </p>
                 <Button
                   variant="warning"
-                  size="lg"
+                  size="md"
                   className="rounded-pill px-4 py-3 fw-bold"
                 >
                   Book Free Consultation
+                  <BsArrowRight className="ms-2" />
                 </Button>
               </Col>
               <Col lg={6}>
@@ -48,6 +50,8 @@ const AboutUs = () => {
                     src={aboutImg2}
                     alt="Nexgen team working"
                     // fluid
+                    width={500}
+                    height={500}
                     className="img-fluid"
                   />
                 </div>
@@ -64,9 +68,9 @@ const AboutUs = () => {
                 <Card className="h-100 border-0 bg-white shadow-sm p-4">
                   <div
                     className="icon-wrapper bg-primary bg-opacity-10 rounded-circle p-3 mb-4"
-                    style={{ width: "60px" }}
+                    // style={{ width: "60px" }}
                   >
-                    <BsStarFill size={24} className="text-primary" />
+                    <BsStarFill size={24} className="text-color-1" />
                   </div>
                   <h3 className="mb-3">Our Mission</h3>
                   <p className="mb-0">
@@ -80,9 +84,9 @@ const AboutUs = () => {
                 <Card className="h-100 border-0 bg-white shadow-sm p-4">
                   <div
                     className="icon-wrapper bg-warning bg-opacity-10 rounded-circle p-3 mb-4"
-                    style={{ width: "60px" }}
+                    // style={{ width: "60px" }}
                   >
-                    <BsBuilding size={24} className="text-warning" />
+                    <BsBuilding size={24} className="text-color-1" />
                   </div>
                   <h3 className="mb-3">Our Vision</h3>
                   <p className="mb-0">
@@ -102,7 +106,7 @@ const AboutUs = () => {
             <Row className="justify-content-center mb-5">
               <Col lg={8} className="text-center">
                 <h2 className="display-5 fw-bold mb-3">
-                  Why <span className="text-primary">Choose Nexgen</span> Paint?
+                  Why <span className="text-color-2">Choose Nexgen</span> Paint?
                 </h2>
                 <p className="lead text-muted">
                   We solve the paint problems you&apos;ve been struggling with
@@ -113,7 +117,7 @@ const AboutUs = () => {
             <Row className="g-4">
               <Col md={6} lg={4}>
                 <div className="d-flex">
-                  <div className="me-4 text-primary">
+                  <div className="me-4 text-color-1">
                     <BsPalette size={32} />
                   </div>
                   <div>
@@ -127,7 +131,7 @@ const AboutUs = () => {
               </Col>
               <Col md={6} lg={4}>
                 <div className="d-flex">
-                  <div className="me-4 text-primary">
+                  <div className="me-4 text-color-1">
                     <BsShieldCheck size={32} />
                   </div>
                   <div>
@@ -140,7 +144,7 @@ const AboutUs = () => {
               </Col>
               <Col md={6} lg={4}>
                 <div className="d-flex">
-                  <div className="me-4 text-primary">
+                  <div className="me-4 text-color-1">
                     <BsBuilding size={32} />
                   </div>
                   <div>
@@ -154,7 +158,7 @@ const AboutUs = () => {
               </Col>
               <Col md={6} lg={4}>
                 <div className="d-flex">
-                  <div className="me-4 text-primary">
+                  <div className="me-4 text-color-1">
                     <BsTruck size={32} />
                   </div>
                   <div>
@@ -168,7 +172,7 @@ const AboutUs = () => {
               </Col>
               <Col md={6} lg={4}>
                 <div className="d-flex">
-                  <div className="me-4 text-primary">
+                  <div className="me-4 text-color-1">
                     <BsHeadset size={32} />
                   </div>
                   <div>
@@ -189,27 +193,29 @@ const AboutUs = () => {
           <Container>
             <Row className="align-items-center">
               <Col lg={6} className="mb-5 mb-lg-0">
-                <h2 className="display-5 fw-bold mb-4">
-                  Join the <span className="text-primary">Nexgen Movement</span>
-                </h2>
+                <h3 className="display-5 fw-bold mb-4">
+                  Join the <span className="text-color-2">Nexgen Movement</span>
+                </h3>
                 <p className="lead mb-4">
                   Thousands of homeowners, contractors, and real estate
                   developers trust Nexgen Paint to bring their spaces to life.
                 </p>
                 <div className="d-flex flex-wrap gap-3">
                   <Button
-                    variant="primary"
-                    size="lg"
+                    variant="dark"
+                    size="md"
                     className="rounded-pill px-4"
                   >
                     Book Free Consultation
+                    <BsArrowRight className="ms-2" />
                   </Button>
                   <Button
                     variant="outline-primary"
-                    size="lg"
+                    size="md"
                     className="rounded-pill px-4"
                   >
                     View Our Projects
+                    <BsArrowRight className="ms-2" />
                   </Button>
                 </div>
               </Col>
@@ -222,12 +228,12 @@ const AboutUs = () => {
                       ))}
                       <span className="ms-2 fw-bold">4.9/5</span>
                     </div>
-                    <blockquote className="mb-4 fs-5">
+                    <small className="mb-4 fs-5 small">
                       Nexgen&apos;s premium matte finish transformed our home.
                       After 3 years, the colors still look as vibrant as day
                       one. Worth every naira!
-                    </blockquote>
-                    <div className="d-flex align-items-center">
+                    </small>
+                    <div className="d-flex align-items-center mt-3">
                       <Image
                         src={aboutImg2}
                         width={60}
@@ -248,21 +254,22 @@ const AboutUs = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-5 py-lg-7 bg-primary text-white text-center">
+        <section className="py-5 py-lg-7 bg-blue text-white text-center">
           <Container>
-            <h2 className="display-5 fw-bold mb-4">
+            <h4 className="display-5 fw-bold mb-4">
               Ready to Transform Your Space?
-            </h2>
-            <p className="lead mb-5 mx-auto" style={{ maxWidth: "600px" }}>
+            </h4>
+            <p className="mb-5 mx-auto">
               Experience the Nexgen difference with our premium paints and
               expert color consultation.
             </p>
             <Button
               variant="light"
-              size="lg"
+              size="sm"
               className="rounded-pill px-5 py-3 fw-bold"
             >
               Get Started Today
+              <BsArrowRight className="ms-2" />
             </Button>
           </Container>
         </section>
