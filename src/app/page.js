@@ -217,7 +217,7 @@ export default function Home() {
                     alt="Founder"
                     width={80}
                     height={80}
-                    rounded
+                    rounded="true"
                     className="me-3 rounded shadow"
                   />
                   <div>

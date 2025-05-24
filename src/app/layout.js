@@ -18,6 +18,29 @@ export const metadata = {
   title: "Transform Your Space with the Power of Color",
   description:
     "Nexgen Paint brings superior coverage and vibrant colors to every project",
+  openGraph: {
+    title: "Transform Your Space with the Power of Color",
+    description:
+      "Nexgen Paint brings superior coverage and vibrant colors to every project",
+    url: "https://nexgen-phi.vercel.app", // Replace with your actual domain
+    siteName: "Nexgen Paint",
+    images: [
+      {
+        url: "https://nexgen-phi.vercel.app/nexgen-logo.png", // MUST be absolute
+        width: 1200,
+        height: 630,
+        alt: "Nexgen Paint Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Transform Your Space with the Power of Color",
+    description:
+      "Nexgen Paint brings superior coverage and vibrant colors to every project",
+    images: ["https://nexgen-phi.vercel.app/nexgen-logo.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
