@@ -23,6 +23,7 @@ import productImg from "../assets/paint-featured.jpg";
 import { BsTree, BsGem, BsPeople } from "react-icons/bs";
 import aboutImg from "../assets/colorful-about.jpg";
 import aboutImg2 from "../assets/paint-pen.jpg";
+import founderImg from "../assets/Shola_Julius.jpeg";
 import { features, products } from "@/util/data";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
@@ -78,10 +79,10 @@ export default function Home() {
               </ul>
 
               {/* CTA Section */}
-              <div className="d-flex flex-wrap gap-4 align-items-center">
+              <div className="d-flex flex-wrap gap-4 align-items-center mb-lg-5">
                 <Button
                   variant="warning"
-                  size="lg"
+                  size="md"
                   className="rounded-pill px-5 py-3 fw-bold shadow-lg hover-transform"
                 >
                   Get Free Color Consultation →
@@ -140,7 +141,7 @@ export default function Home() {
         </Container>
 
         {/* Trust indicators at bottom */}
-        <div className="position-absolute bottom-0 w-100 bg-gradient shadow py-5">
+        <div className="position-absolute bottom-0 w-100 bg-gradient shadow py-5 d-none d-sm-block">
           <Container>
             <Row className="g-4 text-center">
               <Col xs={6} md={3}>
@@ -212,15 +213,12 @@ export default function Home() {
               <Card className="bg-white p-4 rounded-3 shadow mt-5 border-start border-5">
                 <div className="d-flex">
                   <Image
-                    src={aboutImg2}
+                    src={founderImg}
                     alt="Founder"
                     width={80}
                     height={80}
-                    // roundedCircle
-                    style={{
-                      objectFit: "cover",
-                    }}
-                    className="me-3"
+                    rounded
+                    className="me-3 rounded shadow"
                   />
                   <div>
                     <blockquote className="mb-2 fst-italic">
