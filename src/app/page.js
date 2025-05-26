@@ -318,6 +318,8 @@ export default function Home() {
                   variant="warning"
                   size="md"
                   className="rounded-pill px-4 shadow"
+                  as={Link}
+                  href="/about-us"
                 >
                   Read More
                   <BsArrowRight className="ms-2" />
@@ -408,6 +410,8 @@ export default function Home() {
                     variant="light"
                     size="md"
                     className="rounded-pill mt-auto"
+                    as={Link}
+                    href="/product"
                   >
                     Explore Paint Categories
                     <BsArrowRight className="ms-2" />

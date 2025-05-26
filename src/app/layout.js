@@ -16,17 +16,20 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Transform Your Space with the Power of Color",
+  icons: {
+    icon: "/nexgen-logo.png",
+  },
   description:
     "Nexgen Paint brings superior coverage and vibrant colors to every project",
   openGraph: {
     title: "Transform Your Space with the Power of Color",
     description:
       "Nexgen Paint brings superior coverage and vibrant colors to every project",
-    url: "https://nexgen-phi.vercel.app", // Replace with your actual domain
+    url: "https://nexgen-phi.vercel.app",
     siteName: "Nexgen Paint",
     images: [
       {
-        url: "https://nexgen-phi.vercel.app/nexgen-logo.png", // MUST be absolute
+        url: "https://nexgen-phi.vercel.app/nexgen-logo.png",
         width: 1200,
         height: 630,
         alt: "Nexgen Paint Logo",
