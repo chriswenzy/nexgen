@@ -369,9 +369,9 @@ const HouseColorSelector = () => {
         >
           Save This Combination
         </Button>
-        <Button variant="outline-primary" size="md">
+        {/* <Button variant="outline-primary" size="md">
           Get a Quote for This Design
-        </Button>
+        </Button> */}
       </div>
 
       {savedCombinations.length > 0 && (
