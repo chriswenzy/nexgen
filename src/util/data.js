@@ -69,7 +69,7 @@ export const contactInfo = {
     "12 Industrial Road",
     "Lagos, Nigeria",
     "info@nexgenpaint.com",
-    "+234 800 000 0000",
+    "+234 906 796 6435",
   ],
 };
 

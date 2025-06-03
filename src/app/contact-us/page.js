@@ -48,7 +48,7 @@ const ContactUs = () => {
                     </div>
                     <h3 className="h4 mb-3">Phone</h3>
                     <p className="fs-4 fw-bold text-color-3 mb-1">
-                      +234-XXX-XXXX
+                      +234 906 796 6435
                     </p>
                     <p className="text-muted">
                       <BsClock className="me-2" />
