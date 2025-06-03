@@ -2,7 +2,7 @@
 import PublicLayout from "@/components/layout/public-layout";
 import { productCategories, quickLinks } from "@/util/data";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -23,18 +23,34 @@ import {
   BsArrowRight,
 } from "react-icons/bs";
 import aboutImg2 from "../../assets/art-brush.jpg";
+import Home from "../page";
+import HouseColorSelector from "@/components/colorSelector/colorSelector";
 
 const Products = () => {
+  // const getColorFamilyBase = (family) => {
+  //   const colors = {
+  //     Neutrals: "#f5f5f5",
+  //     Blues: "#e3f2fd",
+  //     Greens: "#e8f5e9",
+  //     "Warm Tones": "#fff3e0",
+  //     "Modern Grays": "#eceff1",
+  //     "Vibrant Accents": "#fce4ec",
+  //   };
+  //   return colors[family] || "#ffffff";
+  // };
+
+  const [selectedColorFamily, setSelectedColorFamily] = useState(null);
+
   const getColorFamilyBase = (family) => {
     const colors = {
-      Neutrals: "#f5f5f5",
-      Blues: "#e3f2fd",
-      Greens: "#e8f5e9",
-      "Warm Tones": "#fff3e0",
-      "Modern Grays": "#eceff1",
-      "Vibrant Accents": "#fce4ec",
+      Neutrals: "#d3cfc7",
+      Blues: "#4a90e2",
+      Greens: "#6ab04c",
+      "Warm Tones": "#e67e22",
+      "Modern Grays": "#7f8c8d",
+      "Vibrant Accents": "#f39c12",
     };
-    return colors[family] || "#ffffff";
+    return colors[family] || "#ccc";
   };
 
   return (
@@ -233,7 +249,7 @@ const Products = () => {
               </Col>
             </Row>
 
-            <Row className="g-4">
+            {/* <Row className="g-4">
               {[
                 "Neutrals",
                 "Blues",
@@ -257,7 +273,9 @@ const Products = () => {
                   </Card>
                 </Col>
               ))}
-            </Row>
+            </Row> */}
+
+            <HouseColorSelector />
 
             {/* <div className="text-center mt-5">
               <Button variant="primary" size="lg" className="rounded-pill px-4">
