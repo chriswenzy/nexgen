@@ -19,6 +19,7 @@ import {
   BsArrowReturnLeft,
   BsHandshake,
   BsQuestionCircle,
+  BsQuestionCircleFill,
 } from "react-icons/bs";
 
 const FQApage = () => {
@@ -26,7 +27,7 @@ const FQApage = () => {
     <PublicLayout>
       <div className="faq-page">
         {/* Hero Section */}
-        <section className="py-5 py-lg-7 bg-primary text-white">
+        <section className="py-5 py-lg-7 bg-blue text-white">
           <Container>
             <Row className="justify-content-center text-center">
               <Col lg={8}>
@@ -86,7 +87,7 @@ const FQApage = () => {
             <Row className="justify-content-center">
               <Col lg={8} className="text-center">
                 <div className="icon-wrapper bg-primary bg-opacity-10 rounded-circle p-4 mb-4 mx-auto d-inline-flex">
-                  <BsQuestionCircle size={48} className="text-primary" />
+                  <BsQuestionCircleFill size={88} className="text-primary" />
                 </div>
                 <h2 className="mb-4">Still Have Questions?</h2>
                 <p className="lead mb-5 mx-auto" style={{ maxWidth: "600px" }}>
@@ -96,14 +97,14 @@ const FQApage = () => {
                 <div className="d-flex flex-wrap justify-content-center gap-3">
                   <Button
                     variant="primary"
-                    size="lg"
+                    size="md"
                     className="rounded-pill px-4"
                   >
-                    WhatsApp: +234-XXX-XXX
+                    Call: +234 906 796 6435
                   </Button>
                   <Button
                     variant="outline-primary"
-                    size="lg"
+                    size="md"
                     className="rounded-pill px-4"
                   >
                     Email: support@nexgenpaint.com

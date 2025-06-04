@@ -1,3 +1,4 @@
+"use client";
 import PublicLayout from "@/components/layout/public-layout";
 import Image from "next/image";
 
@@ -23,10 +24,15 @@ import {
 } from "react-icons/bs";
 import aboutImg2 from "../../assets/paint-brush-4.jpg";
 import { benefits, partnerCategories, partnerTypes } from "@/util/data";
+import PartnershipModal from "@/components/modal/partnership-modal";
+import { useState } from "react";
 
 const Partner = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <PublicLayout>
+    <PublicLayout show={showModal} onHide={() => setShowModal(false)}>
+      <PartnershipModal />
       <div className="partnerships-page">
         {/* Hero Section */}
         <section className="py-5 py-lg-7 bg-dark text-white position-relative">
@@ -202,6 +208,7 @@ const Partner = () => {
               variant="light"
               size="md"
               className="rounded-pill px-5 fw-bold"
+              onClick={() => setShowModal(true)}
             >
               Apply to Become a Partner
             </Button>
