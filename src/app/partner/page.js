@@ -31,8 +31,8 @@ const Partner = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <PublicLayout show={showModal} onHide={() => setShowModal(false)}>
-      <PartnershipModal />
+    <PublicLayout>
+      <PartnershipModal show={showModal} onHide={() => setShowModal(false)} />
       <div className="partnerships-page">
         {/* Hero Section */}
         <section className="py-5 py-lg-7 bg-dark text-white position-relative">
@@ -56,6 +56,7 @@ const Partner = () => {
                   variant="warning"
                   size="md"
                   className="rounded-pill px-4"
+                  onClick={() => setShowModal(true)}
                 >
                   Apply to Become a Partner
                 </Button>

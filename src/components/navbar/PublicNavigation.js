@@ -1,11 +1,12 @@
 "use client";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Badge, Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../assets/nexgen-logo.svg";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { navItems } from "@/util/data";
 import { BsArrowRight } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
 
 const PublicNavigationBar = () => {
   const pathname = usePathname(); // Correct way to get current route in App Router
@@ -55,16 +56,15 @@ const PublicNavigationBar = () => {
 
           {/* CTA Button */}
           <div className="d-flex">
-            {/* <Link href="/auth/register">
-              <Button
-                variant="warning"
-                size="md"
-                className="rounded-pill px-4 shadow"
-              >
-                Get Started
-                <BsArrowRight className="ms-2" />
-              </Button>
-            </Link> */}
+            <Link href="/cart">
+              <div className=" position-relative">
+                <FaShoppingCart className="" />
+
+                <span className="position-absolute top-0 start-100 translate-end badge rounded-pill bg-danger">
+                  30
+                </span>
+              </div>
+            </Link>
           </div>
         </Navbar.Collapse>
       </Container>
