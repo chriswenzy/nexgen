@@ -218,7 +218,7 @@ export const products = [
     size: "20L",
     price: "₦25,000",
     oldPrice: "₦25,625",
-    image: "/images/products/buckets/bucket_6.jpeg",
+    image: "/images/products/buckets/bucket_4.jpg",
   },
   {
     id: "00011",
@@ -269,7 +269,7 @@ export const products = [
     size: "4L",
     price: "₦4,800",
     oldPrice: "₦4,920",
-    image: "/images/products/buckets/bucket_1.jpg",
+    image: "/images/products/buckets/bucket_4.jpg",
   },
   {
     id: "00016",
