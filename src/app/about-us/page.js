@@ -13,6 +13,7 @@ import {
   BsArrowRight,
 } from "react-icons/bs";
 import aboutImg2 from "../../assets/activity-painting.jpg";
+import Link from "next/link";
 
 const AboutUs = () => {
   return (
@@ -39,6 +40,8 @@ const AboutUs = () => {
                   variant="warning"
                   size="md"
                   className="rounded-pill px-4 py-3 fw-bold"
+                  as={Link}
+                  href="/contact-us"
                 >
                   Book Free Consultation
                   <BsArrowRight className="ms-2" />
@@ -205,6 +208,8 @@ const AboutUs = () => {
                     variant="dark"
                     size="md"
                     className="rounded-pill px-4"
+                    as={Link}
+                    href="/contact-us"
                   >
                     Book Free Consultation
                     <BsArrowRight className="ms-2" />
@@ -213,6 +218,8 @@ const AboutUs = () => {
                     variant="outline-primary"
                     size="md"
                     className="rounded-pill px-4"
+                    as={Link}
+                    href="/products"
                   >
                     View Our Projects
                     <BsArrowRight className="ms-2" />
@@ -267,6 +274,8 @@ const AboutUs = () => {
               variant="light"
               size="sm"
               className="rounded-pill px-5 py-3 fw-bold"
+              as={Link}
+              href="/contact-us"
             >
               Get Started Today
               <BsArrowRight className="ms-2" />

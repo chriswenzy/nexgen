@@ -496,9 +496,9 @@ export default function Home() {
                         <BsStarFill className="me-1" />
                         {product.rating}
                       </div>
-                      <small className="text-muted">
+                      {/* <small className="text-muted">
                         ({product.reviews} reviews)
-                      </small>
+                      </small> */}
                     </div>
 
                     {/* Product Info */}
@@ -518,7 +518,7 @@ export default function Home() {
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="d-grid gap-2">
+                    {/* <div className="d-grid gap-2">
                       <Button
                         variant="primary"
                         size="sm"
@@ -534,7 +534,7 @@ export default function Home() {
                       >
                         View Details
                       </Button>
-                    </div>
+                    </div> */}
                   </CardBody>
                 </Card>
               </Col>
