@@ -1,4 +1,5 @@
 "use client";
+import { addToCart } from "@/slices/cart/cartSlice";
 import { products } from "@/util/data";
 import React, { useState } from "react";
 import {
@@ -11,11 +12,15 @@ import {
   InputGroup,
   Button,
 } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
+
+  const dispatch = useDispatch();
 
   const categories = [...new Set(products.map((p) => p.category))];
   const subCategories = [...new Set(products.map((p) => p.subCategory))];
@@ -29,10 +34,36 @@ const ProductsSection = () => {
     );
   });
 
-  //   const { addToCart } = useCart();
-
   const handleAddToCart = (product) => {
-    console.log("cart", product);
+    dispatch(addToCart(product));
+
+    toast.success(`${product?.name} added to cart!`);
+
+    // Get existing cart from sessionStorage or initialize
+    let cartItems = [];
+
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("cartItems");
+      cartItems = stored ? JSON.parse(stored) : [];
+
+      // Check if item already exists (based on id and size)
+      const existingIndex = cartItems.findIndex(
+        (item) => item.id === product.id && item.size === product.size
+      );
+
+      if (existingIndex >= 0) {
+        // Update quantity
+        cartItems[existingIndex].quantity += 1;
+      } else {
+        // Add new item with quantity
+        cartItems.push({ ...product, quantity: 1 });
+      }
+
+      // Save back to sessionStorage
+      sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+
+    console.log("Updated cart:", cartItems);
   };
 
   return (

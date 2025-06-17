@@ -84,6 +84,8 @@ export default function Home() {
                   variant="warning"
                   size="md"
                   className="rounded-pill px-5 py-3 fw-bold shadow-lg hover-transform"
+                  as={Link}
+                  href="/about-us"
                 >
                   Get Free Color Consultation →
                 </Button>
@@ -246,12 +248,12 @@ export default function Home() {
                 </Badge>
                 <h2 className="display-5 fw-bold mb-4">
                   Revolutionizing{" "}
-                  <span className="text-color-2">African Homes</span> Since 2010
+                  <span className="text-color-2">African Homes</span>
                 </h2>
                 <p className="">
                   What started as a small Lagos paint shop has grown into
-                  Nigeria&apos;s most trusted paint brand, transforming over
-                  50,000 spaces with our premium formulations.
+                  Nigeria&apos;s most trusted paint brand, handling over 80,000
+                  sqm with our premium formulations.
                 </p>
               </div>
 
@@ -347,20 +349,20 @@ export default function Home() {
               <p className="small text-muted">Perfecting our craft</p>
             </Col>
             <Col md={3} className="text-center">
-              <div className="display-4 fw-bold text-warning mb-2">50K+</div>
-              <h5 className="mb-0">Projects</h5>
-              <p className="small text-muted">Across West Africa</p>
+              <div className="display-4 fw-bold text-warning mb-2">80k +</div>
+              <h5 className="mb-0">sqm</h5>
+              <p className="small text-muted">Projects</p>
             </Col>
             <Col md={3} className="text-center">
               <div className="display-4 fw-bold text-warning mb-2">200+</div>
               <h5 className="mb-0">Team Members</h5>
               <p className="small text-muted">Passionate experts</p>
             </Col>
-            <Col md={3} className="text-center">
+            {/* <Col md={3} className="text-center">
               <div className="display-4 fw-bold text-warning mb-2">15</div>
               <h5 className="mb-0">Innovation Awards</h5>
               <p className="small text-muted">Industry recognition</p>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </section>

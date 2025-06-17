@@ -7,10 +7,26 @@ import Image from "next/image";
 import { navItems } from "@/util/data";
 import { BsArrowRight } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PublicNavigationBar = () => {
-  const pathname = usePathname(); // Correct way to get current route in App Router
+  const pathname = usePathname();
+  const [cartCount, setCartCount] = useState(0);
+  const cart = useSelector((state) => state.cart.items);
+  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("cartItems");
+      const items = stored ? JSON.parse(stored) : [];
+      const totalQty = items.reduce(
+        (sum, item) => sum + (item.quantity || 1),
+        0
+      );
+      setCartCount(totalQty);
+    }
+  }, []);
   return (
     <Navbar expand="lg" sticky="top" className="bg-white shadow-sm py-3">
       <Container>
@@ -54,15 +70,15 @@ const PublicNavigationBar = () => {
             ))}
           </Nav>
 
-          {/* CTA Button */}
-          <div className="d-flex">
-            <Link href="/cart">
-              <div className=" position-relative">
-                <FaShoppingCart className="" />
-
-                <span className="position-absolute top-0 start-100 translate-end badge rounded-pill bg-danger">
-                  30
-                </span>
+          <div className="d-flex align-items-center">
+            <Link href="/paint-cart" passHref>
+              <div className="position-relative" style={{ cursor: "pointer" }}>
+                <FaShoppingCart size={22} className="text-dark" />
+                {total > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {total}
+                  </span>
+                )}
               </div>
             </Link>
           </div>

@@ -47,9 +47,15 @@ const ContactUs = () => {
                       <BsTelephone size={32} className="text-color-2" />
                     </div>
                     <h3 className="h4 mb-3">Phone</h3>
-                    <p className="fs-4 fw-bold text-color-3 mb-1">
+                    <a
+                      href="https://wa.me/2349067966435"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="fs-4 fw-bold text-color-3 mb-1 text-decoration-none"
+                    >
                       +234 906 796 6435
-                    </p>
+                    </a>
+
                     <p className="text-muted">
                       <BsClock className="me-2" />
                       Mon – Sat, 9am to 6pm

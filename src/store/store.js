@@ -6,6 +6,7 @@ import configSlice from "../slices/config/configSlice";
 import CrowdfundingSlice from "../slices/crowdfunding/crowdfundingSlice";
 import InvestmentSlice from "../slices/investment/investmentSlice";
 import SavingSlice from "../slices/savings/savingsSlice";
+import CartSlice from "../slices/cart/cartSlice";
 
 const isBrowser = typeof window !== "undefined";
 
@@ -22,6 +23,7 @@ const store = configureStore({
     crowdfunding: CrowdfundingSlice,
     investment: InvestmentSlice,
     savings: SavingSlice,
+    cart: CartSlice,
 
     loading: (state = initialLoadingState, action) => {
       if (isBrowser) {
