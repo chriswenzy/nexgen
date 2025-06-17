@@ -249,7 +249,7 @@ export const products = [
     size: "20L",
     price: "₦70,000",
     oldPrice: "₦71,750",
-    image: "/images/products/buckets/bucket_2.jpg",
+    image: "/images/products/buckets/bucket_5.jpeg",
   },
   {
     id: "00014",
@@ -259,7 +259,7 @@ export const products = [
     size: "4L",
     price: "₦14,000",
     oldPrice: "₦14,350",
-    image: "/images/products/buckets/bucket_6.jpeg",
+    image: "/images/products/buckets/bucket_5.jpeg",
   },
   {
     id: "00015",
@@ -279,7 +279,7 @@ export const products = [
     size: "4L",
     price: "₦5,100",
     oldPrice: "₦5,228",
-    image: "/images/products/buckets/bucket_8.jpeg",
+    image: "/images/products/buckets/bucket_4.jpg",
   },
   {
     id: "00017",
@@ -289,7 +289,7 @@ export const products = [
     size: "20L",
     price: "₦155,000",
     oldPrice: "₦158,875",
-    image: "/images/products/buckets/bucket_1.jpg",
+    image: "/images/products/buckets/bucket_7.jpeg",
   },
   {
     id: "00018",
@@ -299,7 +299,7 @@ export const products = [
     size: "4L",
     price: "₦31,000",
     oldPrice: "₦31,475",
-    image: "/images/products/buckets/bucket_4.jpg",
+    image: "/images/products/buckets/bucket_7.jpeg",
   },
   {
     id: "00019",
