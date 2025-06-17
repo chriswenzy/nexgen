@@ -66,8 +66,9 @@ export const footerLinks = [
 export const contactInfo = {
   title: "Contact",
   details: [
-    "12 Industrial Road",
+    "Lagos: 12 Industrial Road",
     "Lagos, Nigeria",
+    "Abuja: D15, Rukayat Plaza, Obafemi Awolowo way, Jabi",
     "info@nexgenpaint.com",
     "+234 906 796 6435",
   ],

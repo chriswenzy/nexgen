@@ -26,6 +26,7 @@ import aboutImg2 from "../../assets/art-brush.jpg";
 import Home from "../page";
 import HouseColorSelector from "@/components/colorSelector/colorSelector";
 import ProductsSection from "@/components/product-section/products";
+import Link from "next/link";
 
 const Products = () => {
   return (
@@ -79,13 +80,13 @@ const Products = () => {
                         </Col>
                       ))}
                     </Row>
-                    <Button
+                    {/* <Button
                       variant="outline-dark"
                       className="mt-3 rounded-pill"
                     >
                       Explore All Paint Options
                       <BsArrowRight className="ms-2" />
-                    </Button>
+                    </Button> */}
                   </Card.Body>
                 </Card>
               </Col>
@@ -103,6 +104,8 @@ const Products = () => {
                     <Button
                       variant="light"
                       className="rounded-pill mt-auto px-4"
+                      as={Link}
+                      href="/contact-us"
                     >
                       Book a Free Paint Consultation
                       <BsArrowRight className="ms-2" />
