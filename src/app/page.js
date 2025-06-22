@@ -204,8 +204,8 @@ export default function Home() {
                       <BsAward size={32} className="text-warning" />
                     </div>
                     <div>
-                      <h3 className="mb-0">A lot</h3>
-                      <p className="small mb-0">Industry Awards</p>
+                      <h3 className="mb-0">Industry recognized</h3>
+                      <p className="small mb-0"> Awards</p>
                     </div>
                   </div>
                 </Card>
@@ -349,7 +349,7 @@ export default function Home() {
               <p className="small text-muted">Perfecting our craft</p>
             </Col>
             <Col md={3} className="text-center">
-              <div className="display-4 fw-bold text-warning mb-2">80k +</div>
+              <div className="display-4 fw-bold text-warning mb-2">200k +</div>
               <h5 className="mb-0">sqm</h5>
               <p className="small text-muted">Projects</p>
             </Col>

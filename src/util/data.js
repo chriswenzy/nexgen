@@ -55,10 +55,10 @@ export const footerLinks = [
   {
     title: "Legal",
     links: [
-      { text: "Terms of Service", url: "#" },
-      { text: "Privacy Policy", url: "#" },
-      { text: "Product Warranty", url: "#" },
-      { text: "Compliance", url: "#" },
+      { text: "Terms of Service", url: "/terms" },
+      { text: "Privacy Policy", url: "/privacy-policy" },
+      { text: "Product Warranty", url: "/product-warranty" },
+      { text: "Compliance", url: "/compliance" },
     ],
   },
 ];
