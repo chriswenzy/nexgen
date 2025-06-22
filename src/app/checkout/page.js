@@ -38,15 +38,25 @@ const CheckoutPage = () => {
   );
 
   const handlePaymentSuccess = () => {
-    toast.success("Payment successful! 🎉 Your order has been placed.");
+    toast.success("Payment successful! 🎉 Your order has been placed.", {
+      position: "top-center",
+      autoClose: 4000,
+    });
+
+    // Clear cart in state
     setCart([]);
+
+    // Safely access window and clear session storage
     if (typeof window !== "undefined") {
       sessionStorage.removeItem("cartItems");
     }
 
-    console.log("paid");
+    // Optional: Delay before redirect to let user see toast
+    setTimeout(() => {
+      router.push("/product");
+    }, 1000);
 
-    router.push("/product");
+    console.log("✅ Payment success handled");
   };
 
   const [formData, setFormData] = useState({
