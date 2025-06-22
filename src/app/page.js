@@ -28,6 +28,7 @@ import { features, products } from "@/util/data";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Link from "next/link";
+import ProductCarousel from "@/util/ProductCarousel";
 export default function Home() {
   return (
     <PublicLayout>
@@ -103,41 +104,8 @@ export default function Home() {
             </Col>
 
             {/* Product showcase - right side */}
-            <Col lg={5} className="d-none d-lg-block ">
-              <div className="paint-can-card bg-white rounded-4 p-4 shadow-lg position-relative">
-                <div className="position-absolute top-0 start-50 translate-middle">
-                  <div className="bg-danger text-white small px-3 py-2 rounded-pill fw-bold">
-                    🔥 35% OFF Today Only
-                  </div>
-                </div>
-                <Image
-                  src={productImg}
-                  alt="Nexgen Premium Paint"
-                  width={600}
-                  height={400}
-                  className="img-fluid"
-                />
-                <div className="text-center mt-3">
-                  <div className="h4 fw-bold mb-1">Nexgen Elite Series</div>
-                  <div className="d-flex justify-content-center gap-2 mb-3">
-                    <span className="text-decoration-line-through text-muted">
-                      ₦24,999
-                    </span>
-                    <span className="h5 fw-bold text-danger">₦16,249</span>
-                  </div>
-                  <Button
-                    variant="dark"
-                    size="lg"
-                    className="w-100 rounded-pill py-3"
-                  >
-                    Add to Cart
-                  </Button>
-                  <div className="small text-muted mt-2">
-                    <BsShieldCheck className="text-success me-2" />
-                    2-Year Warranty Included
-                  </div>
-                </div>
-              </div>
+            <Col lg={5} className="d-none d-lg-block">
+              <ProductCarousel featuredProducts={products.slice(0, 5)} />
             </Col>
           </Row>
         </Container>
