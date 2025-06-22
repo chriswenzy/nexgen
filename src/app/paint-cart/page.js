@@ -2,6 +2,7 @@
 import PublicLayout from "@/components/layout/public-layout";
 import { addToCart } from "@/slices/cart/cartSlice";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -16,8 +17,9 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 const CartPage = () => {
   const [cart, setCart] = useState([]);
-  const [mounted, setMounted] = useState(false); // <- Important
+  const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -44,10 +46,12 @@ const CartPage = () => {
   );
 
   const handleCheckout = () => {
-    if (cart.length === 0) return toast.warn("Your cart is empty.");
-    toast.success("Checkout successful!");
-    setCart([]);
-    sessionStorage.removeItem("cartItems");
+    // if (cart.length === 0) return toast.warn("Your cart is empty.");
+    // toast.success("Checkout successful!");
+    // setCart([]);
+    // sessionStorage.removeItem("cartItems");
+
+    router.push("/checkout");
   };
 
   if (!mounted) return null; // Prevent mismatch by delaying render
