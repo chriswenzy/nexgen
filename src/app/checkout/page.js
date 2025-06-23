@@ -5,14 +5,26 @@ import Image from "next/image";
 import { BsShieldLock, BsTruck } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import PublicLayout from "@/components/layout/public-layout";
-import { PaystackButton } from "react-paystack";
+// import { PaystackButton } from "react-paystack";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
 const CheckoutPage = () => {
   const [cartItems, setCart] = useState([]);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
+  const PaystackButton = dynamic(
+    () => import("react-paystack").then((mod) => mod.PaystackButton),
+    {
+      ssr: false,
+      loading: () => (
+        <Button disabled className="w-100 rounded-pill py-3 fw-bold">
+          Loading payment...
+        </Button>
+      ),
+    }
+  );
   const parsePrice = (priceStr) => {
     return parseInt(priceStr.replace(/[₦,]/g, "").trim(), 10);
   };
@@ -97,9 +109,18 @@ const CheckoutPage = () => {
     onClose: () => toast.warning("Payment was cancelled."),
   };
 
-  useEffect(() => {
-    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+  if (mounted && cartItems.length === 0) {
+    return (
+      <PublicLayout>
+        <Container className="py-5 text-center">
+          <h3>Your cart is empty 🛒</h3>
+          <Button href="/product" variant="warning" className="mt-3">
+            Go Back to Shop
+          </Button>
+        </Container>
+      </PublicLayout>
+    );
+  }
 
   return (
     <PublicLayout>
