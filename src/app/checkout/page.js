@@ -101,7 +101,7 @@ const CheckoutPage = () => {
       city: formData.city,
       state: formData.state,
     },
-    publicKey: "pk_test_d4ce6055a19fe88cc4d7deba5969eab02d6de5ca",
+    publicKey: "pk_test_35c95e42ffaaccc8b35d6526091fd95de9b3c9ba",
     text: "Place Order",
     onSuccess: () => {
       handlePaymentSuccess();
