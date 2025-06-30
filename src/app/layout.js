@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Transform Your Space with the Power of Color",
   icons: {
-    icon: "/nexgen-logo.png",
+    icon: "/nexgen-logo.svg",
   },
   description:
     "Nexgen Paint brings superior coverage and vibrant colors to every project",
@@ -29,7 +29,7 @@ export const metadata = {
     siteName: "Nexgen Paint",
     images: [
       {
-        url: "https://nexgen-phi.vercel.app/nexgen-logo.png",
+        url: "/nexgen-logo.svg",
         width: 1200,
         height: 630,
         alt: "Nexgen Paint Logo",
@@ -42,7 +42,7 @@ export const metadata = {
     title: "Transform Your Space with the Power of Color",
     description:
       "Nexgen Paint brings superior coverage and vibrant colors to every project",
-    images: ["https://nexgen-phi.vercel.app/nexgen-logo.png"],
+    images: ["/nexgen-logo.svg"],
   },
 };
 

@@ -13,6 +13,7 @@ const CheckoutPage = () => {
   const [cartItems, setCart] = useState([]);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const paystackKey = process.env.PAYSTACK_KEY;
 
   const PaystackButton = dynamic(
     () => import("react-paystack").then((mod) => mod.PaystackButton),
@@ -101,7 +102,7 @@ const CheckoutPage = () => {
       city: formData.city,
       state: formData.state,
     },
-    publicKey: "pk_test_35c95e42ffaaccc8b35d6526091fd95de9b3c9ba",
+    publicKey: paystackKey,
     text: "Place Order",
     onSuccess: () => {
       handlePaymentSuccess();
