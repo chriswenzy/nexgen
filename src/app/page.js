@@ -19,17 +19,18 @@ import {
   BsStarFill,
 } from "react-icons/bs";
 import heroImg from "../assets/paint-splash.jpg";
-import productImg from "../assets/paint-featured.jpg";
 import { BsTree, BsGem, BsPeople } from "react-icons/bs";
 import aboutImg from "../assets/colorful-about.jpg";
 import aboutImg2 from "../assets/paint-pen.jpg";
 import founderImg from "../assets/Shola_Julius.jpeg";
 import { features, products } from "@/util/data";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Link from "next/link";
 import ProductCarousel from "@/util/ProductCarousel";
 export default function Home() {
+  const randomProducts = [...products]
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 8);
+
   return (
     <PublicLayout>
       <section className="hero-section position-relative overflow-hidden">
@@ -430,7 +431,7 @@ export default function Home() {
 
           {/* Product Cards */}
           <Row className="g-4">
-            {products.map((product) => (
+            {randomProducts.map((product) => (
               <Col key={product.id} md={6} lg={3}>
                 <Card className="h-100 border-0 shadow-sm product-card">
                   {/* Product Badge */}
@@ -449,8 +450,6 @@ export default function Home() {
                     <Image
                       width={300}
                       height={300}
-                      // fill
-                      variant="top"
                       src={product.image}
                       alt={product.name}
                       className="img-fluid"
@@ -464,9 +463,9 @@ export default function Home() {
                         <BsStarFill className="me-1" />
                         {product.rating}
                       </div>
-                      {/* <small className="text-muted">
-                        ({product.reviews} reviews)
-                      </small> */}
+                      <small className="text-muted">
+                        ({product.size} Size)
+                      </small>
                     </div>
 
                     {/* Product Info */}
@@ -486,7 +485,7 @@ export default function Home() {
                     </div>
 
                     {/* CTA Buttons */}
-                    {/* <div className="d-grid gap-2">
+                    <div className="d-grid gap-2">
                       <Button
                         variant="primary"
                         size="sm"
@@ -495,14 +494,7 @@ export default function Home() {
                         <BsCartPlus className="me-2" />
                         Add to Cart
                       </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="rounded-pill"
-                      >
-                        View Details
-                      </Button>
-                    </div> */}
+                    </div>
                   </CardBody>
                 </Card>
               </Col>

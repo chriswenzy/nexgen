@@ -267,8 +267,8 @@ export const products = [
     category: "Wood/Metal Paint",
     subCategory: "Gloss Finish",
     size: "4L",
-    price: "₦4,800",
-    oldPrice: "₦4,920",
+    price: "₦24,000",
+    oldPrice: "₦24,600",
     image: "/images/products/buckets/bucket_4.jpg",
   },
   {
@@ -277,8 +277,8 @@ export const products = [
     category: "Wood/Metal Paint",
     subCategory: "Gloss Finish",
     size: "4L",
-    price: "₦5,100",
-    oldPrice: "₦5,228",
+    price: "₦25,500",
+    oldPrice: "₦26,138",
     image: "/images/products/buckets/bucket_4.jpg",
   },
   {
