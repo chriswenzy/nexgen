@@ -8,7 +8,6 @@ import PublicLayout from "@/components/layout/public-layout";
 // import { PaystackButton } from "react-paystack";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import { Formik } from "formik";
 
 const CheckoutPage = () => {
   const [cartItems, setCart] = useState([]);
@@ -126,264 +125,184 @@ const CheckoutPage = () => {
 
   return (
     <PublicLayout>
-      <Container className="my-5">
-        <Row className="gy-4">
-          {/* Campaign Details */}
-          <Col md={6}>
-            <Card className="shadow border-0 h-100">
+      <Container className="py-5">
+        <Row>
+          {/* Form Column */}
+          <Col lg={7}>
+            <h2 className="mb-4">Checkout</h2>
+
+            {/* Billing & Shipping Info */}
+            <Card className="mb-4 shadow-sm">
               <Card.Body>
-                <div className="mb-3">
-                  <h2 className="mb-1">{crowdfundingInfo?.data?.name}</h2>
-                  <small className="text-muted">
-                    Category: {crowdfundingInfo?.data?.category?.name}
-                  </small>
-                </div>
+                <h5 className="mb-3">Billing & Shipping Info</h5>
+                <Form>
+                  <Row className="mb-3">
+                    <Col md={6}>
+                      <Form.Label>Full Name</Form.Label>
+                      <Form.Control
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        required
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <Form.Label>Phone</Form.Label>
+                      <Form.Control
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+234..."
+                        required
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="mb-3">
+                    <Col md={6}>
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <Form.Label>Delivery Address</Form.Label>
+                      <Form.Control
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        placeholder="12 Industrial Road, Lagos"
+                        required
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="mb-3">
+                    <Col md={6}>
+                      <Form.Label>City</Form.Label>
+                      <Form.Control
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        placeholder="Lagos"
+                        required
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <Form.Label>State</Form.Label>
+                      <Form.Control
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                        placeholder="Lagos State"
+                        required
+                      />
+                    </Col>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
 
-                <Card.Text className="mb-2">
-                  <strong>Description:</strong>{" "}
-                  {crowdfundingInfo?.data?.description}
-                </Card.Text>
-                <Card.Text className="mb-2">
-                  <strong>Model:</strong> {crowdfundingInfo?.data?.model}
-                </Card.Text>
-                <Card.Text className="mb-2">
-                  <strong>Duration:</strong> {crowdfundingInfo?.data?.duration}
-                </Card.Text>
-                <Card.Text className="mb-2">
-                  <strong>Goal:</strong> ₦
-                  {Number(crowdfundingInfo?.data?.goal).toLocaleString()}
-                </Card.Text>
-
-                <hr />
-
-                <div className="mt-3">
-                  <h6 className="fw-semibold text-secondary">Organizer</h6>
-                  <Card.Text className="mb-1">
-                    {crowdfundingInfo?.data?.created_by.first_name}{" "}
-                    {crowdfundingInfo?.data?.created_by.last_name}
-                  </Card.Text>
-                  <Card.Text className="mb-1 text-muted">
-                    {crowdfundingInfo?.data?.created_by.email}
-                  </Card.Text>
-                  <Card.Text className="text-muted">
-                    {crowdfundingInfo?.data?.created_by.phone_number}
-                  </Card.Text>
-                </div>
+            {/* Payment Method */}
+            <Card className="shadow-sm">
+              <Card.Body>
+                <h5 className="mb-3">Payment Method</h5>
+                <Form>
+                  <Form.Check
+                    name="payment"
+                    label="Pay with Card or Transfer"
+                    type="radio"
+                    defaultChecked
+                    className="mb-2"
+                  />
+                  {/* <Form.Check
+                    name="payment"
+                    label="Pay on Delivery"
+                    type="radio"
+                    className="mb-2"
+                  /> */}
+                </Form>
+                <p className="small text-muted mt-2">
+                  <BsShieldLock className="me-1" />
+                  Transactions are secured & encrypted
+                </p>
               </Card.Body>
             </Card>
           </Col>
 
-          {/* Donation Form */}
-          <Col md={6}>
-            <Card className="shadow border-0 h-100">
+          {/* Order Summary Column */}
+          <Col lg={5} className="mt-4 mt-lg-0">
+            <Card className="shadow-lg">
               <Card.Body>
-                <h4 className="mb-4">Support this Campaign</h4>
+                <h5 className="mb-4">Order Summary</h5>
 
-                <Formik
-                  initialValues={{
-                    name: "",
-                    email: "",
-                    phone: "",
-                    amount: "",
-                    paymentMethod: "",
-                  }}
-                  validationSchema={validationSchema}
-                  onSubmit={(values) => {
-                    // Payment method specific submission handled by their buttons
-                  }}
-                >
-                  {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleSubmit,
-                    isValid,
-                  }) => (
-                    <Form noValidate onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Full Name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="name"
-                          placeholder="John Doe"
-                          value={values.name}
-                          onChange={handleChange}
-                          isInvalid={touched.name && !!errors.name}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.name}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                          type="email"
-                          name="email"
-                          placeholder="johndoe@example.com"
-                          value={values.email}
-                          onChange={handleChange}
-                          isInvalid={touched.email && !!errors.email}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.email}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="phone"
-                          placeholder="+234..."
-                          value={values.phone}
-                          onChange={handleChange}
-                          isInvalid={touched.phone && !!errors.phone}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.phone}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-4">
-                        <Form.Label>Amount (₦)</Form.Label>
-                        <Form.Control
-                          type="number"
-                          name="amount"
-                          placeholder="1000"
-                          value={values.amount}
-                          onChange={handleChange}
-                          isInvalid={touched.amount && !!errors.amount}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.amount}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      {/* Payment Methods Section */}
-                      <div className="mb-4">
-                        <h6 className="mb-3 fw-semibold">Payment Method</h6>
-                        <div className="d-flex flex-column gap-2">
-                          {payment_method.map((method) => (
-                            <div
-                              key={method.id}
-                              className={`payment-method-card p-3 rounded-3 border ${
-                                values.paymentMethod === method.id
-                                  ? "border-primary bg-primary-light"
-                                  : "border-light"
-                              }`}
-                              onClick={() =>
-                                handleChange({
-                                  target: {
-                                    name: "paymentMethod",
-                                    value: method.id,
-                                  },
-                                })
-                              }
-                              style={{ cursor: "pointer" }}
-                            >
-                              <div className="d-flex align-items-center">
-                                <div className="me-3">
-                                  <Image
-                                    src={method.image}
-                                    alt={method.name}
-                                    style={{
-                                      width: "40px",
-                                      height: "40px",
-                                      objectFit: "contain",
-                                    }}
-                                  />
-                                </div>
-                                <div>
-                                  <h6 className="mb-0">{method.name}</h6>
-                                  <small className="text-muted">
-                                    {method.description}
-                                  </small>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+                {cartItems.map((item) => {
+                  const unitPrice = parsePrice(item.price);
+                  const lineTotal = item.quantity * unitPrice;
+                  return (
+                    <div
+                      key={item.id}
+                      className="d-flex align-items-center mb-3 border-bottom pb-2"
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={60}
+                        height={60}
+                        className="rounded me-3"
+                      />
+                      <div className="flex-grow-1">
+                        <h6 className="mb-0">{item.name}</h6>
+                        <small>
+                          Qty: {item.quantity} × ₦{unitPrice.toLocaleString()}
+                        </small>
                       </div>
+                      <div>₦{lineTotal.toLocaleString()}</div>
+                    </div>
+                  );
+                })}
 
-                      {isValid && values.paymentMethod ? (
-                        values.paymentMethod ===
-                        "9a66259f-7274-43e2-bfc1-27fda52599ae" ? (
-                          <PaystackButton
-                            className="btn btn-success w-100 py-3 fw-bold"
-                            {...{
-                              email: values.email,
-                              amount: parseInt(values.amount) * 100,
-                              metadata: {
-                                name: values.name,
-                                phone: values.phone,
-                                campaignId: crowdfundingInfo?.data?.id,
-                              },
-                              publicKey: payment_method.find(
-                                (m) => m.id === values.paymentMethod
-                              )?.publicKey,
-                              text: `Pay with Paystack - ₦${values.amount}`,
-                              onSuccess: () => alert("Payment Successful"),
-                              onClose: () => alert("Payment Cancelled"),
-                            }}
-                          />
-                        ) : (
-                          <Button
-                            variant="primary"
-                            className="w-100 py-3 fw-bold"
-                          >
-                            Pay with{" "}
-                            {
-                              payment_method.find(
-                                (m) => m.id === values.paymentMethod
-                              )?.name
-                            }{" "}
-                            - ₦{values.amount}
-                          </Button>
-                        )
-                      ) : (
-                        <Button
-                          variant="secondary"
-                          disabled
-                          className="w-100 py-3"
-                        >
-                          {!values.paymentMethod
-                            ? "Select a payment method"
-                            : "Fill all fields to enable payment"}
-                        </Button>
-                      )}
-                    </Form>
+                {/* Totals */}
+                <hr />
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Subtotal</span>
+                  <strong>₦{total.toLocaleString()}</strong>
+                </div>
+                <div className="d-flex justify-content-between fs-5 border-top pt-3">
+                  <strong>Total</strong>
+                  <strong>₦{total.toLocaleString()}</strong>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-4">
+                  {isFormValid() ? (
+                    <PaystackButton
+                      {...componentProps}
+                      className="btn btn-success w-100 rounded-pill py-3 fw-bold"
+                    />
+                  ) : (
+                    <Button
+                      variant="secondary"
+                      disabled
+                      className="w-100 rounded-pill py-3 fw-bold"
+                    >
+                      Fill all required fields to continue
+                    </Button>
                   )}
-                </Formik>
+                </div>
+
+                <p className="text-center text-muted mt-3 small">
+                  <BsTruck className="me-1" /> Fast nationwide delivery
+                </p>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       </Container>
-
-      <style jsx>{`
-        .payment-method-card {
-          transition: all 0.3s ease;
-        }
-        .payment-method-card:hover {
-          border-color: #0d6efd !important;
-          background-color: rgba(13, 110, 253, 0.05);
-        }
-        .bg-primary-light {
-          background-color: rgba(13, 110, 253, 0.1) !important;
-        }
-        .btn-success {
-          background: linear-gradient(135deg, #28a745, #20c997);
-          border: none;
-          box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
-        }
-        .btn-primary {
-          background: linear-gradient(135deg, #0d6efd, #6610f2);
-          border: none;
-          box-shadow: 0 4px 6px rgba(13, 110, 253, 0.3);
-        }
-      `}</style>
     </PublicLayout>
   );
 };
