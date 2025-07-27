@@ -1,3 +1,4 @@
+"use client";
 import PublicLayout from "@/components/layout/public-layout";
 import Image from "next/image";
 import { Container, Row, Col, Button, Card, Badge } from "react-bootstrap";
@@ -14,6 +15,7 @@ import {
 } from "react-icons/bs";
 import aboutImg2 from "../../assets/activity-painting.jpg";
 import Link from "next/link";
+import ClientsSlider from "@/components/slider/clients-slider";
 
 const AboutUs = () => {
   return (
@@ -257,6 +259,28 @@ const AboutUs = () => {
                 </Card>
               </Col>
             </Row>
+          </Container>
+        </section>
+
+        <section className="py-5 bg-white position-relative">
+          <Container>
+            <Row className="justify-content-center mb-5">
+              <Col lg={8} className="text-center">
+                <h2 className="display-5 fw-bold mb-3">
+                  Trusted by{" "}
+                  <span className="text-color-1">Leading Brands</span>
+                </h2>
+                <p className="lead">
+                  Join the ranks of satisfied clients who trust Nexgen for their
+                  most important projects.
+                </p>
+              </Col>
+            </Row>
+
+            {/* Clients Slider */}
+            <div className="clients-slider-wrapper">
+              <ClientsSlider />
+            </div>
           </Container>
         </section>
 
