@@ -9,11 +9,6 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata = {
   title: "Transform Your Space with the Power of Color",
   icons: {

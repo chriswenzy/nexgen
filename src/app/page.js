@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import PublicLayout from "@/components/layout/public-layout";
 import {
@@ -26,6 +27,7 @@ import founderImg from "../assets/Shola_Julius.jpeg";
 import { features, products } from "@/util/data";
 import Link from "next/link";
 import ProductCarousel from "@/util/ProductCarousel";
+import ClientsSlider from "@/components/slider/clients-slider";
 export default function Home() {
   const randomProducts = [...products]
     .sort(() => 0.5 - Math.random())
@@ -416,7 +418,28 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-5 my-5 bg-white">
+      <section className="py-5 bg-white position-relative">
+        <Container>
+          <Row className="justify-content-center mb-5">
+            <Col lg={8} className="text-center">
+              <h2 className="display-5 fw-bold mb-3">
+                Trusted by <span className="text-color-1">Leading Brands</span>
+              </h2>
+              <p className="lead">
+                Join the ranks of satisfied clients who trust Nexgen for their
+                most important projects.
+              </p>
+            </Col>
+          </Row>
+
+          {/* Clients Slider */}
+          <div className="clients-slider-wrapper">
+            <ClientsSlider />
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-5 my-5 bg-light">
         <Container>
           {/* Section Header */}
           <Row className="mb-5">
