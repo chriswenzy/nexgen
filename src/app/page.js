@@ -94,15 +94,22 @@ export default function Home() {
                   Get Free Color Consultation →
                 </Button>
 
-                <div className="d-flex align-items-center text-white">
-                  <div className="me-3">
-                    <BsPlayCircle size={36} className="text-warning" />
+                <a
+                  href="https://youtu.be/qno9A5V0BWA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  <div className="d-flex align-items-center text-white">
+                    <div className="me-3">
+                      <BsPlayCircle size={36} className="text-warning" />
+                    </div>
+                    <div>
+                      <div className="small">See how it works</div>
+                      <div className="fw-bold">2-Minute Demo</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="small">See how it works</div>
-                    <div className="fw-bold">2-Minute Demo</div>
-                  </div>
-                </div>
+                </a>
               </div>
             </Col>
 

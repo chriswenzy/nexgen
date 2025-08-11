@@ -7,10 +7,24 @@ import {
   contactInfo,
   footerLinks,
 } from "@/util/data";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 function PublicFooter() {
   return (
     <footer className="bg-dark text-white pt-5 pb-4">
+      <FloatingWhatsApp
+        phoneNumber="2349067966435"
+        accountName="Nexgen Paint Support"
+        chatMessage="🎨 Welcome to Nexgen Paint.  
+We’re here to help you choose the perfect colors."
+        avatar="../../assets/nexgen-logo-trans.svg"
+        // allowEsc
+        // allowClickAway
+        // notification
+        // notificationSound
+        // className="whatsapp-float"
+      />
+
       <Container>
         {/* Main Footer Content */}
         <Row className="g-4 mb-4">
