@@ -71,6 +71,9 @@ const PublicNavigationBar = () => {
           </Nav>
 
           <div className="d-flex align-items-center">
+            <Button className="btn btn-primary d-flex align-items-center gap-2">
+              Login <BsArrowRight />
+            </Button>
             <Link href="/paint-cart" passHref>
               <div className="position-relative" style={{ cursor: "pointer" }}>
                 <FaShoppingCart size={22} className="text-dark" />

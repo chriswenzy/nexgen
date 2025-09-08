@@ -84,6 +84,7 @@ export const navItems = [
   { name: "About Us", path: "/about-us", matchExact: true },
   { name: "Products", path: "/product", matchStartsWith: true },
   { name: "Partners", path: "/partner", matchExact: true },
+  { name: "Blog", path: "/blogs", matchExact: true },
   { name: "Contact Us", path: "/contact-us", matchExact: true },
 ];
 
