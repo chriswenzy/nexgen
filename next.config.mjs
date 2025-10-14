@@ -7,7 +7,7 @@ const nextConfig = {
     PAYSTACK_KEY: process.env.PAYSTACK_KEY,
     PROD_PAYSTACK_KEY: process.env.PROD_PAYSTACK_KEY,
   },
-  output: "export",
+  // output: "export",
   images: {
     unoptimized: true,
   },

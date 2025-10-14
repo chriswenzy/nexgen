@@ -21,6 +21,7 @@ api.interceptors.request.use(
 api.defaults.headers.post["Content-Type"] = "application/json";
 api.defaults.headers.put["Content-Type"] = "application/json";
 api.defaults.headers.patch["Content-Type"] = "application/json";
+api.defaults.headers.patch["Content-Type"] = "application/multipart-form-data";
 
 export const GetRequest = async (url) => {
   try {
@@ -49,14 +50,14 @@ export const PostRequest = async (url, data) => {
   } catch (error) {
     console.error("Error:", error);
     toast.warn("Unauthorized");
-    if (error?.response?.status === 401) {
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("auth-user");
-        sessionStorage.removeItem("loading");
-        window.location.href = "/";
-      }
-    }
+    // if (error?.response?.status === 401) {
+    //   if (typeof window !== "undefined") {
+    //     sessionStorage.removeItem("token");
+    //     sessionStorage.removeItem("auth-user");
+    //     sessionStorage.removeItem("loading");
+    //     window.location.href = "/";
+    //   }
+    // }
     throw error;
   }
 };
@@ -69,14 +70,14 @@ export const PutRequest = async (url, data) => {
   } catch (error) {
     console.error("Error:", error);
     toast.warn("Unauthorized");
-    if (error?.response?.status === 401) {
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("auth-user");
-        sessionStorage.removeItem("loading");
-        window.location.href = "/";
-      }
-    }
+    // if (error?.response?.status === 401) {
+    //   if (typeof window !== "undefined") {
+    //     sessionStorage.removeItem("token");
+    //     sessionStorage.removeItem("auth-user");
+    //     sessionStorage.removeItem("loading");
+    //     window.location.href = "/";
+    //   }
+    // }
     throw error;
   }
 };
@@ -88,14 +89,14 @@ export const PatchRequest = async (url, data) => {
   } catch (error) {
     console.error("Error:", error);
     toast.warn("Unauthorized");
-    if (error?.response?.status === 401) {
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("auth-user");
-        sessionStorage.removeItem("loading");
-        window.location.href = "/";
-      }
-    }
+    // if (error?.response?.status === 401) {
+    //   if (typeof window !== "undefined") {
+    //     sessionStorage.removeItem("token");
+    //     sessionStorage.removeItem("auth-user");
+    //     sessionStorage.removeItem("loading");
+    //     window.location.href = "/";
+    //   }
+    // }
     throw error;
   }
 };

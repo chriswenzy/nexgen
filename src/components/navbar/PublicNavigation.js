@@ -71,7 +71,11 @@ const PublicNavigationBar = () => {
           </Nav>
 
           <div className="d-flex align-items-center">
-            <Button className="btn btn-primary d-flex align-items-center gap-2">
+            <Button
+              className="btn btn-primary d-flex align-items-center gap-2"
+              as={Link}
+              href="/auth/login"
+            >
               Login <BsArrowRight />
             </Button>
             <Link href="/paint-cart" passHref>

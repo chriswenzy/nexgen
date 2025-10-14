@@ -4,10 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "./provider";
 import CustomCursor from "@/util/CustomCursor";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Transform Your Space with the Power of Color",

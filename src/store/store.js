@@ -3,7 +3,7 @@ import authSlice from "../slices/auth/authSlice";
 import userSlice from "../slices/user/userSlice";
 import dataSlice from "../slices/data/dataSlice";
 import configSlice from "../slices/config/configSlice";
-import CrowdfundingSlice from "../slices/crowdfunding/crowdfundingSlice";
+import productSlice from "../slices/products/productsSlice";
 import InvestmentSlice from "../slices/investment/investmentSlice";
 import SavingSlice from "../slices/savings/savingsSlice";
 import CartSlice from "../slices/cart/cartSlice";
@@ -20,7 +20,7 @@ const store = configureStore({
     user: userSlice,
     data: dataSlice,
     config: configSlice,
-    crowdfunding: CrowdfundingSlice,
+    product: productSlice,
     investment: InvestmentSlice,
     savings: SavingSlice,
     cart: CartSlice,
