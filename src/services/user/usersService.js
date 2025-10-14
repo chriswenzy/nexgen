@@ -6,7 +6,7 @@ import {
 } from "@/util/apiMethods";
 
 export const GetAllUsers = async (page, query) => {
-  let url = "auth/users";
+  let url = "/users";
 
   const params = new URLSearchParams();
 
@@ -29,30 +29,30 @@ export const GetAllUsers = async (page, query) => {
 };
 
 export const AddUser = async (body) => {
-  const response = await PostRequest("auth/users", body);
+  const response = await PostRequest("/users", body);
   return response;
 };
 
 export const GetUserById = async (id) => {
-  const response = await GetRequest(`auth/users/${id}`);
+  const response = await GetRequest(`/users/${id}`);
   return response;
 };
 
 export const UpdateUser = async (id, body) => {
-  const response = await PutRequest(`auth/users/${id}/`, body);
+  const response = await PutRequest(`/users/${id}/`, body);
   return response;
 };
 
 export const DeleteUser = async (id) => {
-  await DeleteRequest(`auth/users/${id}`);
+  await DeleteRequest(`/users/${id}`);
 };
 
 export const getAuthUser = async () => {
-  const response = await GetRequest("/auth/user");
+  const response = await GetRequest("/user");
   return response;
 };
 
 export const updateAuthUser = async (body) => {
-  const response = await PutRequest("/auth/user/auth/update", body);
+  const response = await PutRequest("/user", body);
   return response;
 };

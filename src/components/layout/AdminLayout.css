@@ -1,0 +1,372 @@
+.admin-layout {
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.light-mode {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.dark-mode .admin-navbar {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  border-bottom: 1px solid #4a5568;
+}
+
+.dark-mode .content-wrapper {
+  background: #2d3748;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.dark-mode .notification-dropdown,
+.dark-mode .profile-dropdown {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+}
+
+.dark-mode .notification-item,
+.dark-mode .profile-dropdown-item {
+  color: #fff;
+}
+
+.dark-mode .notification-item:hover,
+.dark-mode .profile-dropdown-item:hover {
+  background-color: #4a5568;
+}
+
+.dark-mode .notification-time {
+  color: #cbd5e0;
+}
+
+/* Navbar Styles */
+.admin-navbar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Toggle */
+.sidebar-toggle {
+  color: inherit;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Brand Logo */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  color: white !important;
+  text-decoration: none;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.brand-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Icons */
+.icon {
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  color: white !important;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Notifications */
+.notification-toggle {
+  color: white !important;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.notification-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.notification-dropdown {
+  min-width: 300px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.notification-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f3f4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.view-all-notifications {
+  font-weight: 500;
+}
+
+/* User Profile */
+.user-profile-toggle {
+  color: white !important;
+  display: flex !important;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  border: none;
+  background: transparent;
+}
+
+.user-profile-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+  margin-right: 0.75rem;
+}
+
+.avatar-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.user-role {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.dropdown-arrow {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.user-profile-toggle.show .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.profile-dropdown-item:hover {
+  background-color: #f8f9fa;
+  text-decoration: none;
+  color: inherit;
+}
+
+.store-link {
+  color: #667eea !important;
+  font-weight: 600;
+}
+
+/* Main Content */
+.admin-container {
+  padding: 0;
+}
+
+.main-content {
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.content-wrapper {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  min-height: calc(100vh - 120px);
+}
+
+/* Sidebar Column */
+.sidebar-col {
+  transition: all 0.3s ease;
+}
+
+.sidebar-col.collapsed {
+  flex: 0 0 80px;
+  max-width: 80px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .brand-text {
+    display: none;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .content-wrapper {
+    padding: 1.5rem;
+    border-radius: 12px;
+    min-height: calc(100vh - 100px);
+  }
+
+  .notification-dropdown {
+    min-width: 280px;
+    transform: translateX(-50%);
+  }
+
+  .sidebar-col {
+    position: fixed;
+    z-index: 1000;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-col.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .dark-mode .sidebar-col {
+    background: #2d3748;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-navbar {
+    padding: 0.5rem 0;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .content-wrapper {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .notification-dropdown {
+    min-width: 250px;
+  }
+}
+
+/* Animation for dark mode transition */
+.admin-layout * {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Dropdown animations */
+.dropdown-menu {
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.sidebar-toggle:focus,
+.theme-toggle:focus,
+.notification-toggle:focus,
+.user-profile-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}

@@ -3,12 +3,13 @@ import "./globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "./provider";
 import CustomCursor from "@/util/CustomCursor";
+import { connectToDB } from "@/lib/db";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
 // });
-
+connectToDB();
 export const metadata = {
   title: "Transform Your Space with the Power of Color",
   icons: {
