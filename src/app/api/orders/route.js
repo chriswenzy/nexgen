@@ -175,6 +175,7 @@ export async function POST(request) {
       for (const item of items) {
         await tx.orderItem.create({
           data: {
+            productName: item.productName,
             orderId: newOrder.id,
             productId: item.productId,
             quantity: item.quantity,
@@ -240,22 +241,40 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get("userId");
+    const page = parseInt(searchParams.get("page") || "1");
+    const pageSize = parseInt(searchParams.get("pageSize") || "10");
 
     const where = userId ? { userId } : {};
 
-    const orders = await prisma.order.findMany({
-      where,
-      include: {
-        orderItems: {
-          include: {
-            product: { select: { name: true, image: true, price: true } },
+    const [orders, totalCount] = await Promise.all([
+      prisma.order.findMany({
+        where,
+        include: {
+          items: {
+            include: {
+              product: { select: { name: true, image: true, price: true } },
+            },
           },
         },
-      },
-      orderBy: { createdAt: "desc" },
-    });
+        orderBy: { createdAt: "desc" },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
 
-    return NextResponse.json({ success: true, orders }, { status: 200 });
+      prisma.order.count({ where }),
+    ]);
+
+    return NextResponse.json(
+      {
+        success: true,
+        page,
+        pageSize,
+        totalCount,
+        totalPages: Math.ceil(totalCount / pageSize),
+        orders,
+      },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("💥 Order Fetch Error:", error);
     return NextResponse.json(

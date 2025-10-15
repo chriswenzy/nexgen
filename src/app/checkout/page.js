@@ -20,7 +20,7 @@ const CheckoutPage = () => {
   const [creatingOrder, setCreatingOrder] = useState(false);
   const [orderRef, setOrderRef] = useState(null);
   const dispatch = useDispatch();
-
+  console.log("pay btn", paystackKey);
   const PaystackButton = dynamic(
     () => import("react-paystack").then((mod) => mod.PaystackButton),
     {
@@ -98,6 +98,24 @@ const CheckoutPage = () => {
     return Object.values(formData).every((val) => val.trim() !== "");
   };
 
+  // const componentProps = {
+  //   email: formData.email,
+  //   amount: total * 100,
+  //   metadata: {
+  //     name: formData.fullName,
+  //     phone: formData.phone,
+  //     orderRef,
+  //   },
+  //   publicKey: paystackKey,
+  //   text: creatingOrder ? "Creating Order..." : "Pay Now",
+  //   onSuccess: (response) => {
+  //     toast.success("🎉 Payment successful!");
+  //     console.log("Payment response:", response);
+  //     // router.push("/order-success");
+  //   },
+  //   onClose: () => toast("Payment cancelled."),
+  // };
+
   const componentProps = {
     email: formData.email.trim(),
     amount: total * 100,
@@ -108,10 +126,13 @@ const CheckoutPage = () => {
       city: formData.city,
       state: formData.state,
     },
-    publicKey: paystackKey,
-    text: "Place Order",
-    onSuccess: () => {
-      handlePaymentSuccess();
+    publicKey: "pk_test_97bd804bc5e88420924d2d0bfa7ce0ab903e215e",
+    text: creatingOrder ? "Creating Order..." : "Pay Now",
+    onSuccess: (response) => {
+      toast.success("🎉 Payment successful!");
+      console.log("Payment response:", response);
+      sessionStorage.removeItem("cartItems");
+      router.push("/product");
     },
     onClose: () => toast.warning("Payment was cancelled."),
   };
@@ -144,6 +165,7 @@ const CheckoutPage = () => {
           country: "Nigeria",
         },
         items: cartItems.map((item) => ({
+          productName: item.name,
           productId: item.id,
           quantity: item.quantity,
           price: parsePrice(item.price),
@@ -153,13 +175,16 @@ const CheckoutPage = () => {
       };
 
       const result = await dispatch(addOrderAsync({ values: payload }));
+      console.log("order result", result);
 
       if (addOrderAsync.fulfilled.match(result)) {
         const order = result.payload?.data || result.payload;
+
+        console.log("order info", order?.order?.id);
         toast.success(
           "✅ Order created successfully. Proceeding to payment..."
         );
-        setOrderRef(order.id || order.reference);
+        setOrderRef(order?.order?.id);
         return order;
       } else {
         toast.error("❌ Failed to create order. Please try again.");

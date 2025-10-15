@@ -1,20 +1,19 @@
 export async function generateInvoiceHtml({
-  order,
   items,
   total,
   customerName,
   customerEmail,
-  address,
-  phone,
+  shippingAddress,
+  customerPhone,
 }) {
-  const orderDate = new Date(order.createdAt).toLocaleString();
+  const orderDate = new Date().toLocaleString();
 
   return `
   <!DOCTYPE html>
   <html>
     <head>
       <meta charset="UTF-8" />
-      <title>Invoice - ${order.id}</title>
+      <title>Invoice</title>
       <style>
         body {
           font-family: Arial, sans-serif;
@@ -51,17 +50,30 @@ export async function generateInvoiceHtml({
         .total {
           font-weight: bold;
           text-align: right;
+          font-size: 1.2em;
+          margin-top: 20px;
+        }
+        .customer-info {
+          margin: 20px 0;
+        }
+        .customer-info p {
+          margin: 5px 0;
         }
       </style>
     </head>
     <body>
       <div class="invoice">
         <h1>Invoice</h1>
-        <p><strong>Order ID:</strong> ${order.id}</p>
-        <p><strong>Date:</strong> ${orderDate}</p>
-        <p><strong>Customer:</strong> ${customerName} (${customerEmail})</p>
-        <p><strong>Address:</strong> ${address}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        
+        <div class="customer-info">
+          <p><strong>Date:</strong> ${orderDate}</p>
+          <p><strong>Customer:</strong> ${customerName}</p>
+          <p><strong>Email:</strong> ${customerEmail}</p>
+          <p><strong>Phone:</strong> ${customerPhone}</p>
+          <p><strong>Shipping Address:</strong> ${formatAddress(
+            shippingAddress
+          )}</p>
+        </div>
 
         <table>
           <thead>
@@ -77,10 +89,12 @@ export async function generateInvoiceHtml({
               .map(
                 (item) => `
               <tr>
-                <td>${item.name || item.productName}</td>
+                <td>${item.name || item.productName || "Product"}</td>
                 <td>${item.quantity}</td>
-                <td>₦${item.price.toLocaleString()}</td>
-                <td>₦${(item.price * item.quantity).toLocaleString()}</td>
+                <td>₦${(item.price || 0).toLocaleString()}</td>
+                <td>₦${(
+                  (item.price || 0) * (item.quantity || 0)
+                ).toLocaleString()}</td>
               </tr>
             `
               )
@@ -93,4 +107,27 @@ export async function generateInvoiceHtml({
     </body>
   </html>
   `;
+}
+
+// Helper function to format address (handles both string and stringified object)
+function formatAddress(address) {
+  if (typeof address === "string") {
+    try {
+      const addressObj = JSON.parse(address);
+      // Format address object into readable text
+      return [
+        addressObj.street,
+        addressObj.city,
+        addressObj.state,
+        addressObj.postalCode,
+        addressObj.country,
+      ]
+        .filter(Boolean)
+        .join(", ");
+    } catch (error) {
+      // If parsing fails, return the original string
+      return address;
+    }
+  }
+  return address || "No address provided";
 }

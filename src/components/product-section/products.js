@@ -12,27 +12,31 @@ import {
   InputGroup,
   Button,
 } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const ProductsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
+  const productsInfo = useSelector((state) => state?.product);
 
   const dispatch = useDispatch();
 
   const categories = [...new Set(products.map((p) => p.category))];
   const subCategories = [...new Set(products.map((p) => p.subCategory))];
 
-  const filteredProducts = products.filter((product) => {
-    return (
-      (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (selectedCategory ? product.category === selectedCategory : true) &&
-      (selectedSubCategory ? product.subCategory === selectedSubCategory : true)
-    );
-  });
+  const filteredProducts =
+    productsInfo?.getAllProductsResponse?.products?.filter((product) => {
+      return (
+        (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        (selectedCategory ? product.category === selectedCategory : true) &&
+        (selectedSubCategory
+          ? product.subCategory === selectedSubCategory
+          : true)
+      );
+    });
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));

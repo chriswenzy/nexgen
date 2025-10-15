@@ -6,8 +6,15 @@ import { generateInvoiceHtml } from "./invoiceHtml.js";
  * @param {Object} orderData
  */
 export async function emailInvoice(orderData) {
-  const { order, items, total, customerName, customerEmail, address, phone } =
-    orderData;
+  const {
+    order,
+    items,
+    total,
+    customerName,
+    customerEmail,
+    shippingAddress,
+    customerPhone,
+  } = orderData;
 
   try {
     // 🧩 Generate HTML invoice content
@@ -17,27 +24,58 @@ export async function emailInvoice(orderData) {
       total,
       customerName,
       customerEmail,
-      address,
-      phone,
+      shippingAddress,
+      customerPhone,
     });
 
-    // 📨 Configure mail transporter (use environment vars in production)
+    // 📨 cPanel Email Configuration
+    // const transporter = nodemailer.createTransport({
+    //   host: process.env.EMAIL_SERVER || "mail.nexgenpaint.com", // Your cPanel mail server
+    //   port: Number(process.env.EMAIL_PORT) || 587, // Usually 587 for TLS, 465 for SSL
+    //   secure: false, // true for 465, false for 587
+    //   auth: {
+    //     user: process.env.EMAIL_USER || "info@nexgenpaint.com", // Your cPanel email
+    //     pass: process.env.EMAIL_PASSWORD, // Your cPanel email password
+    //   },
+    //   // Important: Add TLS options
+    //   tls: {
+    //     rejectUnauthorized: false, // This might be needed for some cPanel hosts
+    //     ciphers: "SSLv3",
+    //   },
+    //   connectionTimeout: 30000, // Increase timeout
+    //   socketTimeout: 30000,
+    // });
+
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_SERVER || "smtp.gmail.com",
-      port: Number(process.env.EMAIL_PORT) || 587,
-      secure: false, // true for port 465, false for 587
+      host: "mail.nexgenpaint.com",
+      port: 465,
+      secure: true, // true for port 465
       auth: {
-        user: process.env.EMAIL_USER, // your email
-        pass: process.env.EMAIL_PASSWORD, // your app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
 
+    console.log("🔄 Attempting to connect to cPanel email...");
+
+    // Verify connection
+    await transporter.verify();
+    console.log("✅ SMTP connection verified");
+
     // 🧾 Send mail
     const info = await transporter.sendMail({
-      from: `"NextGen Paints" <${process.env.EMAIL_USER}>`,
+      from: `"NextGen Paints" <sales@nexgenpaint.com>`, // Must match auth user or be an alias
       to: customerEmail,
       subject: `Your Order Invoice - ${order.id}`,
       html,
+      headers: {
+        "X-Priority": "1",
+        "X-MSMail-Priority": "High",
+        Importance: "high",
+      },
     });
 
     console.log("✅ Invoice email sent:", info.messageId);

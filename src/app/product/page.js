@@ -2,7 +2,7 @@
 import PublicLayout from "@/components/layout/public-layout";
 import { productCategories, quickLinks } from "@/util/data";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -27,8 +27,53 @@ import Home from "../page";
 import HouseColorSelector from "@/components/colorSelector/colorSelector";
 import ProductsSection from "@/components/product-section/products";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsAsync } from "@/slices/products/productsSlice";
+import { addToCart } from "@/slices/cart/cartSlice";
+import { toast } from "react-toastify";
 
 const Products = () => {
+  const dispatch = useDispatch();
+  const productsInfo = useSelector((state) => state?.product);
+
+  useEffect(() => {
+    try {
+      dispatch(getAllProductsAsync({}));
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+
+    toast.success(`${product?.name} added to cart!`);
+
+    // Get existing cart from sessionStorage or initialize
+    let cartItems = [];
+
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("cartItems");
+      cartItems = stored ? JSON.parse(stored) : [];
+
+      // Check if item already exists (based on id and size)
+      const existingIndex = cartItems.findIndex(
+        (item) => item.id === product.id && item.size === product.size
+      );
+
+      if (existingIndex >= 0) {
+        // Update quantity
+        cartItems[existingIndex].quantity += 1;
+      } else {
+        // Add new item with quantity
+        cartItems.push({ ...product, quantity: 1 });
+      }
+
+      // Save back to sessionStorage
+      sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  };
+
   return (
     <PublicLayout>
       <div className="products">
@@ -56,8 +101,88 @@ const Products = () => {
             </Row>
           </Container>
         </section>
+        {/* {productsInfo?.getAllProductsResponse && <ProductsSection />} */}
 
-        <ProductsSection />
+        <section className="my-5">
+          <Container>
+            <Row>
+              {Array.isArray(productsInfo?.getAllProductsResponse?.products) &&
+              productsInfo.getAllProductsResponse.products.length > 0 ? (
+                productsInfo.getAllProductsResponse.products.map((product) => (
+                  <Col key={product.id} md={6} lg={4} className="mb-4">
+                    <Card className="h-100 shadow-sm border-0 rounded-4 product-card">
+                      <div className="position-relative">
+                        <Card.Img
+                          variant="top"
+                          src={product.image || "/images/placeholder.png"}
+                          alt={product.name || "Product image"}
+                          style={{
+                            height: "250px",
+                            objectFit: "cover",
+                            borderTopLeftRadius: "1rem",
+                            borderTopRightRadius: "1rem",
+                          }}
+                        />
+                        {product.badge && (
+                          <Badge
+                            bg="warning"
+                            text="dark"
+                            className="position-absolute top-0 start-0 m-2 rounded-pill px-3 py-1 shadow"
+                            style={{ fontSize: "0.75rem", fontWeight: "600" }}
+                          >
+                            {product.badge}
+                          </Badge>
+                        )}
+                      </div>
+
+                      <Card.Body className="d-flex flex-column">
+                        <Card.Title className="fw-semibold mb-1 text-truncate">
+                          {product.name}
+                        </Card.Title>
+
+                        <Card.Text className="text-muted small mb-1">
+                          {product.category} • {product.subCategory}
+                        </Card.Text>
+
+                        <Card.Text className="mb-2">
+                          <small className="text-muted">Size:</small>{" "}
+                          <span>{product.size}</span>
+                        </Card.Text>
+
+                        <Card.Text className="mb-3">
+                          <span className="fw-bold text-success">
+                            {product.price}
+                          </span>{" "}
+                          {product.oldPrice && (
+                            <del className="text-muted ms-2">
+                              {product.oldPrice}
+                            </del>
+                          )}
+                        </Card.Text>
+
+                        <div className="mt-auto">
+                          <Button
+                            variant="primary"
+                            className="w-100 fw-semibold rounded-pill"
+                            onClick={() => handleAddToCart(product)}
+                          >
+                            Add to Cart
+                          </Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))
+              ) : (
+                <Col>
+                  <p className="text-center text-muted">
+                    No products match your search/filter.
+                  </p>
+                </Col>
+              )}
+            </Row>
+          </Container>
+        </section>
 
         {/* Quick Links & Consultation */}
         <section className="py-5 bg-light">
