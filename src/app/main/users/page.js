@@ -253,7 +253,7 @@ export default function UsersPage() {
       </div>
 
       {/* Stats Cards */}
-      <div className="stats-grid">
+      {/* <div className="stats-grid">
         <Card className="stat-card">
           <CardBody>
             <div className="stat-content">
@@ -309,10 +309,10 @@ export default function UsersPage() {
             </div>
           </CardBody>
         </Card>
-      </div>
+      </div> */}
 
       {/* Filters and Actions */}
-      <Card className="filters-card">
+      {/* <Card className="filters-card">
         <CardBody>
           <div className="filters-row">
             <div className="search-section">
@@ -377,14 +377,14 @@ export default function UsersPage() {
             </div>
           </div>
         </CardBody>
-      </Card>
+      </Card> */}
 
       {/* Users Table */}
       <Card className="users-table-card">
         <CardBody>
           <DataTable
             columns={userColumns}
-            data={usersInfo?.getAllUsersResponse?.users || usersData}
+            data={usersInfo?.getAllUsersResponse?.users || []}
             keyField="id"
             searchable={false}
             emptyMessage={

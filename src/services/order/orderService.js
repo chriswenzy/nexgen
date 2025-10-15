@@ -5,8 +5,8 @@ import {
   PutRequest,
 } from "@/util/apiMethods";
 
-export const GetAllSavings = async (page, query) => {
-  let url = "savings/savings";
+export const GetAllOrders = async (page, query) => {
+  let url = "/orders";
 
   const params = new URLSearchParams();
 
@@ -28,8 +28,8 @@ export const GetAllSavings = async (page, query) => {
   return response;
 };
 
-export const GetAllPublicSavings = async (page, query) => {
-  let url = "savings/savings/all";
+export const GetAllPublicOrders = async (page, query) => {
+  let url = "/orders";
 
   const params = new URLSearchParams();
 
@@ -51,24 +51,21 @@ export const GetAllPublicSavings = async (page, query) => {
   return response;
 };
 
-export const AddSaving = async (body) => {
-  const response = await PostRequest("savings/savings/store", body);
+export const AddOrder = async (body) => {
+  const response = await PostRequest("/orders", body);
   return response;
 };
 
-export const GetSavingById = async (savings_id) => {
-  const response = await GetRequest(`savings/savings/one/${savings_id}`);
+export const GetOrderById = async (order_id) => {
+  const response = await GetRequest(`/orders/${order_id}`);
   return response;
 };
 
-export const UpdateSaving = async (savings_id, body) => {
-  const response = await PutRequest(
-    `savings/savings/update/${savings_id}`,
-    body
-  );
+export const UpdateOrder = async (order_id, body) => {
+  const response = await PutRequest(`/orders/${order_id}`, body);
   return response;
 };
 
-export const DeleteSaving = async (savings_id) => {
-  await DeleteRequest(`savings/savings/delete/${savings_id}`);
+export const DeleteOrder = async (order_id) => {
+  await DeleteRequest(`/orders/${order_id}`);
 };

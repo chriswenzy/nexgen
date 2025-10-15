@@ -140,7 +140,13 @@ import { emailInvoice } from "@/lib/emailInvoice";
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { customerName, customerEmail, items, address, phone } = data;
+    const {
+      customerName,
+      customerEmail,
+      items,
+      shippingAddress,
+      customerPhone,
+    } = data;
 
     if (!items || !items.length) {
       return NextResponse.json(
@@ -159,8 +165,8 @@ export async function POST(request) {
         data: {
           customerName,
           customerEmail,
-          address,
-          phone,
+          shippingAddress: JSON.stringify(shippingAddress),
+          customerPhone,
           total,
           status: "PENDING",
         },
@@ -193,8 +199,8 @@ export async function POST(request) {
       total,
       customerName,
       customerEmail,
-      address,
-      phone,
+      shippingAddress,
+      customerPhone,
     });
 
     // 💌 Send invoice email asynchronously (don’t block API)
@@ -204,8 +210,8 @@ export async function POST(request) {
       total,
       customerName,
       customerEmail,
-      address,
-      phone,
+      shippingAddress,
+      customerPhone,
     }).then((r) => console.log(r.message));
 
     return NextResponse.json(

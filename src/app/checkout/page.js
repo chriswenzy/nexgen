@@ -8,12 +8,18 @@ import PublicLayout from "@/components/layout/public-layout";
 // import { PaystackButton } from "react-paystack";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addOrderAsync } from "@/slices/order/orderSlice";
 
 const CheckoutPage = () => {
   const [cartItems, setCart] = useState([]);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const paystackKey = process.env.PAYSTACK_KEY;
+  const [creatingOrder, setCreatingOrder] = useState(false);
+  const [orderRef, setOrderRef] = useState(null);
+  const dispatch = useDispatch();
 
   const PaystackButton = dynamic(
     () => import("react-paystack").then((mod) => mod.PaystackButton),
@@ -123,18 +129,62 @@ const CheckoutPage = () => {
     );
   }
 
+  const handleAddOrder = async () => {
+    try {
+      setCreatingOrder(true);
+
+      const payload = {
+        customerName: formData.fullName,
+        customerEmail: formData.email,
+        customerPhone: formData.phone,
+        shippingAddress: {
+          street: formData.address,
+          city: formData.city,
+          state: formData.state,
+          country: "Nigeria",
+        },
+        items: cartItems.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+          price: parsePrice(item.price),
+        })),
+        totalAmount: total,
+        paymentMethod: "Paystack",
+      };
+
+      const result = await dispatch(addOrderAsync({ values: payload }));
+
+      if (addOrderAsync.fulfilled.match(result)) {
+        const order = result.payload?.data || result.payload;
+        toast.success(
+          "✅ Order created successfully. Proceeding to payment..."
+        );
+        setOrderRef(order.id || order.reference);
+        return order;
+      } else {
+        toast.error("❌ Failed to create order. Please try again.");
+      }
+    } catch (error) {
+      console.error("Order creation error:", error);
+      toast.error("⚠️ An unexpected error occurred.");
+    } finally {
+      setCreatingOrder(false);
+    }
+  };
+
   return (
     <PublicLayout>
       <Container className="py-5">
         <Row>
-          {/* Form Column */}
+          {/* =========================
+            BILLING & SHIPPING FORM
+        ========================== */}
           <Col lg={7}>
-            <h2 className="mb-4">Checkout</h2>
+            <h2 className="mb-4 fw-bold">Checkout</h2>
 
-            {/* Billing & Shipping Info */}
-            <Card className="mb-4 shadow-sm">
+            <Card className="mb-4 shadow-sm border-0 rounded-4">
               <Card.Body>
-                <h5 className="mb-3">Billing & Shipping Info</h5>
+                <h5 className="mb-3 fw-semibold">Billing & Shipping Info</h5>
                 <Form>
                   <Row className="mb-3">
                     <Col md={6}>
@@ -158,12 +208,13 @@ const CheckoutPage = () => {
                       />
                     </Col>
                   </Row>
+
                   <Row className="mb-3">
                     <Col md={6}>
                       <Form.Label>Email</Form.Label>
                       <Form.Control
-                        name="email"
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
@@ -181,7 +232,8 @@ const CheckoutPage = () => {
                       />
                     </Col>
                   </Row>
-                  <Row className="mb-3">
+
+                  <Row>
                     <Col md={6}>
                       <Form.Label>City</Form.Label>
                       <Form.Control
@@ -207,24 +259,20 @@ const CheckoutPage = () => {
               </Card.Body>
             </Card>
 
-            {/* Payment Method */}
-            <Card className="shadow-sm">
+            {/* =========================
+              PAYMENT METHOD
+          ========================== */}
+            <Card className="shadow-sm border-0 rounded-4">
               <Card.Body>
-                <h5 className="mb-3">Payment Method</h5>
+                <h5 className="mb-3 fw-semibold">Payment Method</h5>
                 <Form>
                   <Form.Check
                     name="payment"
-                    label="Pay with Card or Transfer"
+                    label="Pay with Card or Transfer (via Paystack)"
                     type="radio"
                     defaultChecked
                     className="mb-2"
                   />
-                  {/* <Form.Check
-                    name="payment"
-                    label="Pay on Delivery"
-                    type="radio"
-                    className="mb-2"
-                  /> */}
                 </Form>
                 <p className="small text-muted mt-2">
                   <BsShieldLock className="me-1" />
@@ -234,15 +282,18 @@ const CheckoutPage = () => {
             </Card>
           </Col>
 
-          {/* Order Summary Column */}
+          {/* =========================
+            ORDER SUMMARY
+        ========================== */}
           <Col lg={5} className="mt-4 mt-lg-0">
-            <Card className="shadow-lg">
+            <Card className="shadow-lg border-0 rounded-4">
               <Card.Body>
-                <h5 className="mb-4">Order Summary</h5>
+                <h5 className="mb-4 fw-semibold">Order Summary</h5>
 
                 {cartItems.map((item) => {
                   const unitPrice = parsePrice(item.price);
                   const lineTotal = item.quantity * unitPrice;
+
                   return (
                     <div
                       key={item.id}
@@ -266,7 +317,6 @@ const CheckoutPage = () => {
                   );
                 })}
 
-                {/* Totals */}
                 <hr />
                 <div className="d-flex justify-content-between mb-2">
                   <span>Subtotal</span>
@@ -277,13 +327,23 @@ const CheckoutPage = () => {
                   <strong>₦{total.toLocaleString()}</strong>
                 </div>
 
-                {/* CTA Button */}
                 <div className="mt-4">
                   {isFormValid() ? (
-                    <PaystackButton
-                      {...componentProps}
-                      className="btn btn-success w-100 rounded-pill py-3 fw-bold"
-                    />
+                    orderRef ? (
+                      <PaystackButton
+                        {...componentProps}
+                        className="btn btn-success w-100 rounded-pill py-3 fw-bold"
+                      />
+                    ) : (
+                      <Button
+                        onClick={handleAddOrder}
+                        disabled={creatingOrder}
+                        variant="success"
+                        className="w-100 rounded-pill py-3 fw-bold"
+                      >
+                        {creatingOrder ? "Processing..." : "Proceed to Payment"}
+                      </Button>
+                    )
                   ) : (
                     <Button
                       variant="secondary"

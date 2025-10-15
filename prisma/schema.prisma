@@ -47,7 +47,7 @@ model Product {
 
 model Order {
   id              String      @id @default(cuid())
-  userId          String
+  userId          String?     
   total           Decimal
   status          OrderStatus @default(PENDING)
   customerName    String
@@ -57,10 +57,12 @@ model Order {
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   items           OrderItem[]
-  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user            User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("orders")
 }
+
 
 model OrderItem {
   id        String  @id @default(cuid())
@@ -97,4 +99,7 @@ enum OrderStatus {
   SHIPPED
   DELIVERED
   CANCELLED
+  PAID
+  FAILED
 }
+

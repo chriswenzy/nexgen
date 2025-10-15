@@ -23,18 +23,18 @@ export async function emailInvoice(orderData) {
 
     // 📨 Configure mail transporter (use environment vars in production)
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT) || 587,
+      host: process.env.EMAIL_SERVER || "smtp.gmail.com",
+      port: Number(process.env.EMAIL_PORT) || 587,
       secure: false, // true for port 465, false for 587
       auth: {
-        user: process.env.SMTP_USER, // your email
-        pass: process.env.SMTP_PASS, // your app password
+        user: process.env.EMAIL_USER, // your email
+        pass: process.env.EMAIL_PASSWORD, // your app password
       },
     });
 
     // 🧾 Send mail
     const info = await transporter.sendMail({
-      from: `"NextGen Paints" <${process.env.SMTP_USER}>`,
+      from: `"NextGen Paints" <${process.env.EMAIL_USER}>`,
       to: customerEmail,
       subject: `Your Order Invoice - ${order.id}`,
       html,

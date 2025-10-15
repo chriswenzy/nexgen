@@ -403,7 +403,7 @@
 }
 
 /* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .users-page {
     background: #1a202c;
   }
@@ -435,4 +435,4 @@
   .date {
     color: #e2e8f0;
   }
-}
+} */

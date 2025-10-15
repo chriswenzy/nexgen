@@ -1,6 +1,7 @@
 "use client";
 import PublicLayout from "@/components/layout/public-layout";
 import { addToCart } from "@/slices/cart/cartSlice";
+import { addOrderAsync } from "@/slices/order/orderSlice";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -45,7 +46,9 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {
+  console.log("cart items", cart);
+
+  const handleCheckout = async () => {
     // if (cart.length === 0) return toast.warn("Your cart is empty.");
     // toast.success("Checkout successful!");
     // setCart([]);

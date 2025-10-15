@@ -5,7 +5,7 @@ import dataSlice from "../slices/data/dataSlice";
 import configSlice from "../slices/config/configSlice";
 import productSlice from "../slices/products/productsSlice";
 import InvestmentSlice from "../slices/investment/investmentSlice";
-import SavingSlice from "../slices/savings/savingsSlice";
+import orderSlice from "../slices/order/orderSlice";
 import CartSlice from "../slices/cart/cartSlice";
 
 const isBrowser = typeof window !== "undefined";
@@ -22,7 +22,7 @@ const store = configureStore({
     config: configSlice,
     product: productSlice,
     investment: InvestmentSlice,
-    savings: SavingSlice,
+    orders: orderSlice,
     cart: CartSlice,
 
     loading: (state = initialLoadingState, action) => {

@@ -70,7 +70,7 @@ export default function ProductsPage() {
         <Card.Body>
           <DataTable
             columns={productColumns}
-            data={productsInfo?.getAllProductsResponse?.products || products}
+            data={productsInfo?.getAllProductsResponse?.products || []}
             keyField="id"
             onEdit={handleEdit}
             onDelete={handleDelete}
