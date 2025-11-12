@@ -1,20 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Card, CardBody, Form } from "react-bootstrap";
+import { Button, Card, CardBody, Form } from "react-bootstrap";
 import { formatDate, getStatusVariant } from "@/util/constant";
 import DataTable from "@/components/tables/DataTable";
 import { ordersData } from "@/util/data";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersAsync } from "@/slices/order/orderSlice";
+import ViewOrderModal from "./modal/view-order";
 
 export default function OrdersPage() {
-  const [orders, setOrders] = useState(ordersData);
+  const orderInfo = useSelector((state) => state?.orders);
+
+  const [orders, setOrders] = useState(orderInfo?.getAllOrdersResponse?.orders);
   const [statusFilter, setStatusFilter] = useState("all");
-
+  const [selectedOrder, setSelectedOrder] = useState("");
   const dispatch = useDispatch();
-  const orderInfo = useSelector((state) => state?.order);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(5);
+  const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [viewOrderModal, setViewOrderModal] = useState(false);
 
-  console.log("ordeeeee", orderInfo?.getAllProductsResponse);
+  console.log("ordeeeee", orderInfo?.getAllOrdersResponse?.orders);
   useEffect(() => {
     try {
       dispatch(getAllOrdersAsync({}));
@@ -30,9 +37,8 @@ export default function OrdersPage() {
 
   const orderColumns = [
     { key: "id", label: "Order ID" },
-    { key: "customer", label: "Customer" },
-    { key: "product", label: "Product" },
-    { key: "amount", label: "Amount" },
+    { key: "customerName", label: "Customer" },
+    { key: "total", label: "Amount" },
     {
       key: "status",
       label: "Status",
@@ -41,18 +47,29 @@ export default function OrdersPage() {
       ),
     },
     {
-      key: "date",
+      key: "createdAt",
       label: "Order Date",
       render: (value) => formatDate(value),
     },
   ];
 
   const handleView = (order) => {
-    window.location.href = `/admin/orders/${order.id}`;
+    setViewOrderModal(true);
+    setSelectedOrder(order);
+  };
+
+  const handleUpdate = (order) => {
+    setViewOrderModal(true);
+    setSelectedOrder(order);
   };
 
   return (
-    <div>
+    <>
+      <ViewOrderModal
+        show={viewOrderModal}
+        onHide={() => setViewOrderModal(false)}
+        data={selectedOrder}
+      />
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1 className="h3">Orders Management</h1>
         <Form.Select
@@ -71,13 +88,36 @@ export default function OrdersPage() {
         <CardBody>
           <DataTable
             columns={orderColumns}
-            data={filteredOrders}
+            data={orderInfo?.getAllOrdersResponse?.orders || []}
             keyField="id"
             onView={handleView}
+            onEdit={handleUpdate}
             searchable={true}
           />
+
+          <div className="d-flex justify-content-between align-items-center mt-3">
+            <Button
+              variant="outline-secondary"
+              disabled={page === 1}
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            >
+              ← Previous
+            </Button>
+
+            <span className="fw-semibold">
+              Page {page} of {totalPages}
+            </span>
+
+            <Button
+              variant="primary"
+              disabled={page === totalPages}
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              Next →
+            </Button>
+          </div>
         </CardBody>
       </Card>
-    </div>
+    </>
   );
 }

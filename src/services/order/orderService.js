@@ -66,6 +66,11 @@ export const UpdateOrder = async (order_id, body) => {
   return response;
 };
 
+export const UpdateOrderStatus = async (body) => {
+  const response = await PutRequest("/orders", body);
+  return response;
+};
+
 export const DeleteOrder = async (order_id) => {
   await DeleteRequest(`/orders/${order_id}`);
 };

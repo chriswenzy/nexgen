@@ -10,6 +10,7 @@ import {
   GetOrderById,
   GetSavingById,
   UpdateOrder,
+  UpdateOrderStatus,
   UpdateSaving,
 } from "@/services/order/orderService";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
@@ -84,6 +85,38 @@ export const updateOrderAsync = createAsyncThunk(
   }
 );
 
+export const updateOrderStatusAsync = createAsyncThunk(
+  "order/update/status",
+  async ({ payload }, { rejectWithValue }) => {
+    try {
+      const resData = await UpdateOrderStatus(payload);
+      return resData;
+    } catch (error) {
+      // Check if the error has a payload with messages
+      const errorMessages = [];
+
+      if (error.payload) {
+        for (const field in error.payload) {
+          if (Object.prototype.hasOwnProperty.call(error.payload, field)) {
+            const messages = Array.isArray(error.payload[field])
+              ? error.payload[field].map((message) => `${field}: ${message}`)
+              : [`${field}: ${error.payload[field]}`]; // Handle string case
+
+            errorMessages.push(...messages);
+          }
+        }
+      }
+
+      // Return formatted error messages for the reducer to handle
+      return rejectWithValue(
+        errorMessages.length > 0
+          ? errorMessages
+          : ["An unknown error occurred."]
+      );
+    }
+  }
+);
+
 export const deleteOrderAsync = createAsyncThunk(
   "order/delete",
   async ({ order_id }) => {
@@ -101,6 +134,7 @@ const OrdersSlice = createSlice({
     addOrderResponse: {},
     updateOrderResponse: {},
     deleteOrderResponse: {},
+    updateOrderStatusResponse: {},
   },
 
   reducers: {},
@@ -176,6 +210,15 @@ const OrdersSlice = createSlice({
     builder.addCase(deleteOrderAsync.rejected, (state, action) => {
       state.deleteOrderResponse = action.payload;
       toast.error(action?.payload?.message);
+    });
+
+    builder.addCase(updateOrderStatusAsync.fulfilled, (state, action) => {
+      state.updateOrderStatusResponse = action.payload;
+      toast.success(action.payload.message);
+    });
+    builder.addCase(updateOrderStatusAsync.rejected, (state, action) => {
+      state.updateOrderStatusResponse = action.payload;
+      toast.error("Update failed");
     });
   },
 });

@@ -16,7 +16,7 @@ import ImageUpload from "./ImageUpload";
 import SEOFields from "./SEOFields";
 
 // Dynamically import heavy components
-const RichTextEditorDynamic = dynamic(() => import("./RichTextEditor"), {
+const RichTextEditorDynamic = dynamic(() => import("./RichTextEditor2"), {
   ssr: false,
   loading: () => <div>Loading editor...</div>,
 });

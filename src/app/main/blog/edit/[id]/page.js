@@ -2,8 +2,7 @@
 import { useState, useEffect } from "react";
 import { Card, Alert } from "react-bootstrap";
 import { useRouter, useParams } from "next/navigation";
-import BlogEditor from "@/components/admin/BlogEditor";
-import { blogPostsData } from "@/lib/data";
+import { blogPostsData } from "@/util/data";
 
 export default function EditBlogPost() {
   const router = useRouter();

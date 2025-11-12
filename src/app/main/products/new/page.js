@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import { addProductsAsync } from "@/slices/products/productsSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -56,7 +57,7 @@ export default function ProductForm() {
 
       if (!response.ok) throw new Error("Failed to upload product");
 
-      alert("✅ Product uploaded successfully!");
+      toast.success("Product uploaded successfully!");
       resetForm();
       setPreview(null);
     } catch (error) {
