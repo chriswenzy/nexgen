@@ -125,7 +125,7 @@ export const products = [
     category: "Interior Paint",
     subCategory: "Standard Matte",
     size: "20L",
-    price: "₦55,000",
+    price: "₦60,000",
     oldPrice: "₦56,375",
     image: "/images/products/buckets/bucket_1.jpg",
   },
